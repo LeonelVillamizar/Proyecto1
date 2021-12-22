@@ -1,0 +1,65 @@
+<!-- start page title -->
+<div class="row">
+    <div class="col-12">
+        <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+            <h4 class="mb-sm-0 font-size-18">Nuevo grupo</h4>
+
+            <div class="page-title-right">
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item"><a href="javascript: void(0);">Parametrización</a></li>
+                    <li class="breadcrumb-item active">Grupos</li>
+                </ol>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- end page title -->
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <h4 class="card-title">Parametrizar grupos</h4>
+                <p class="card-title-desc">Ingrese el nuevo grupo que desea crear.
+                </p>
+                <div>
+
+                    <form class="user" action="/parametrizacion/add_grupo/{{id}}" method="POST" autocomplete="off">
+                        <div class="form-group row">
+                            <div class="form-group col-sm-6 mb-3 mb-sm-0">
+                                <label class="label label-default">Nombre grupo:</label>
+                                <input type="text" maxlength="200" class="form-control " name="nombre" placeholder=""
+                                    required>
+                            </div>
+                            <div class="form-group col-sm-6 mb-3 mb-sm-0">
+                                <label class="label label-default">Descripción:</label>
+                                <input type="text" class="form-control " maxlength="3000" name="descripcion"
+                                    placeholder="">
+                            </div>
+                        </div>
+                        <br>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-3 col-md-offset-2"></div>
+                                <div class="col-md-3 col-md-offset-2"></div>
+                                <div class="col-md-3 col-md-offset-2">
+                                    <button class="btn btn-primary btn-lg waves-effect waves-light ml-auto">
+                                        Enviar formulario
+                                    </button>
+                                </div>
+                                <div class="col-md-3 col-md-offset-2">
+                                    <a href="/parametrizacion/campos/{{id}}"
+                                        class="btn btn-success btn-lg waves-effect waves-light ml-auto">
+                                        Regresar a la lista
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

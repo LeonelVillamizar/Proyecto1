@@ -1,0 +1,39 @@
+<div class="card shadow mb-4">
+    <!-- {{>message}}-->
+
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Modificar complejidad</h6>
+    </div>
+
+    <!-- Nested Row within Card Body -->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="p-5">
+                <form class="user" action="/parametrizacion_listas/edit_complejidad/{{complejidad.id}}" method="POST">
+                    <div class="form-group row">
+                        <div class="form-group col-sm-6 mb-3 mb-sm-0">
+                            <label class="label label-default">complejidad:</label>
+                            <input type="text" class="form-control " name="nom_complejidad" value="{{complejidad.nom_complejidad}}"
+                                placeholder="" required>
+                        </div>
+                        
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <button class="btn btn-warning btn-block">
+                                Guardar
+                            </button>
+                        </div>
+                        <div class="col-lg-6">
+                            <a href="/parametrizacion_listas/list_complejidad" class="btn btn-secondary btn-block">
+                                Cancelar
+                            </a>
+                        </div>
+                        <hr>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

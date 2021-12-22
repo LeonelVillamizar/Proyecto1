@@ -1,0 +1,127 @@
+<!-- start page title -->
+<div class="row">
+    <div class="col-12">
+        <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+            <h4 class="mb-sm-0 font-size-18">Log de errores</h4>
+
+            <div class="page-title-right">
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item"><a href="javascript: void(0);">Carga de formatos</a></li>
+                    <li class="breadcrumb-item active">Subir archivo</li>
+                    <li class="breadcrumb-item active">Log de errores</li>
+                </ol>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- end page title -->
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Log de errores</h4>
+                <p class="card-title-desc">Visualización de los errores encontrados en los datos del formato de acuerdo
+                    a las validaciones parametrizadas sobre el mismo.
+                    Recuerde que si existe un error de tipo Formatos y el umbral es superior al 30% debe ingresar
+                    obligatoriamente la justificación de las diferencias.
+                </p>
+                <div>
+                    {{#if bandjustificacion}}
+                    <form action="/formatos/log_errores/{{id}}" method="POST">
+
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="mb-3">
+                                    <label for="basicpill-address-input">Justificación diferencias</label>
+                                    <textarea id="justificacion" maxlength="5000" class="form-control"
+                                        name="justificacion" rows="2"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+
+                            <div class="col-md-3 col-md-offset-2"></div>
+                            <div class="col-md-3 col-md-offset-2"></div>
+                            <div class="col-md-3 col-md-offset-2">
+                                <br>
+                                <br>
+                                <button class="btn btn-primary btn-lg waves-effect waves-light ml-auto">Envíar
+                                    justificación</button>
+                            </div>
+                        </div>
+                    </form>
+                    {{/if}}
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-3 col-md-offset-2"></div>
+                            <div class="col-md-3 col-md-offset-2"></div>
+                            <div class="col-md-3 col-md-offset-2"></div>
+                            <div class="col-md-3 col-md-offset-2">
+                                <a href="/formatos/subir_archivo/{{id_for}}"
+                                    class="btn btn-success btn-lg waves-effect waves-light ml-auto">
+                                    Regresar a la lista
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- end col -->
+</div> <!-- end row -->
+
+
+<div class="card-body">
+    <div class="row">
+        <div class="table-responsive">
+            
+            <table id="datatable-buttons" class="table table-bordered dt-responsive nowrap w-100">
+                <thead>
+                    <tr align="center">
+                        <th>Id</th>
+                        <th>Formato actual</th>
+                        <th>Campo actual</th>
+                        <th>Periodo</th>
+                        <th>Tipo de error</th>
+                        <th>Detalle</th>
+                        <th>Tipo validacion</th>
+                        <th>Formato cruce</th>
+                        <th>Campo cruce</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each log_error}}
+                    <tr>
+                        <td>{{id}}</td>
+                        <td>{{nombre_formato}}</td>
+                        <td>{{nombre_campo}}</td>
+                        <td>{{periodo}}</td>
+                        <td>{{id_tipo_error}}</td>
+                        <td>{{detalle}}</td>
+                        <td>{{justificacion}}</td>
+                        <td>{{id_formato}}</td>
+                        <td>{{valor_campo}}</td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+                <tfoot>
+                    <tr align="center">
+                        <th>Id</th>
+                        <th>Formato actual</th>
+                        <th>Campo actual</th>
+                        <th>Periodo</th>
+                        <th>Tipo de error</th>
+                        <th>Detalle</th>
+                        <th>Tipo validacion</th>
+                        <th>Formato cruce</th>
+                        <th>Campo cruce</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>

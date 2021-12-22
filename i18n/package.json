@@ -1,0 +1,72 @@
+{
+    "name": "inversiones",
+    "version": "1.0.0",
+    "description": "Proyecto DCC",
+    "main": "app.js",
+    "dependencies": {
+        "assert": "^2.0.0",
+        "aws-sdk": "2.914.0",
+        "axios": "^0.21.1",
+        "axios-mock-adapter": "^1.19.0",
+        "bcryptjs": "^2.4.3",
+        "body-parser": "^1.19.0",
+        "bootstrap-select": "^1.13.18",
+        "config": "3.3.6",
+        "connect-flash": "^0.1.1",
+        "convert-csv-to-json": "^1.3.0",
+        "csv": "^5.5.0",
+        "date-and-time": "1.0.0",
+        "dotenv": "10.0.0",
+        "express": "^4.17.1",
+        "express-ejs-layouts": "^2.5.0",
+        "express-flash-messages": "^0.1.1",
+        "express-formidable": "^1.2.0",
+        "express-handlebars": "5.3.2",
+        "express-mysql-session": "2.1.6",
+        "express-session": "^1.17.2",
+        "express-validator": "^6.11.1",
+        "http": "^0.0.1-security",
+        "i18n-express": "^1.1.3",
+        "method-override": "3.0.0",
+        "mime": "2.5.2",
+        "moment": "2.29.1",
+        "morgan": "1.10.0",
+        "multer": "1.4.2",
+        "multer-s3": "2.9.0",
+        "mysql": "2.18.1",
+        "node-mysql": "^0.4.2",
+        "passport": "0.4.1",
+        "passport-local": "1.0.0",
+        "path": "^0.12.7",
+        "printj": "^1.2.2",
+        "read-excel-file": "^5.1.0",
+        "req-flash": "^0.0.3",
+        "request": "^2.88.2",
+        "superagent": "^6.1.0",
+        "through2": "^4.0.2",
+        "timeago.js": "4.0.2",
+        "xlsx": "^0.17.2",
+        "xlsx-parse-stream": "^1.0.2",
+        "xlsx-stream": "^0.1.2",
+        "xml-js": "^1.6.11",
+        "xml2js": "^0.4.19"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.12"
+    },
+    "scripts": {
+        "start": "node app.js",
+        "dev": "nodemon app.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/cgarcia0924/apprazonabilidad.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/cgarcia0924/apprazonabilidad/issues"
+    },
+    "homepage": "https://github.com/cgarcia0924/apprazonabilidad#readme"
+}

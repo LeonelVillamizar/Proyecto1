@@ -1,0 +1,119 @@
+<!-- start page title -->
+<div class="row">
+    {{>message}}
+    <div class="col-12">
+        <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+            <h4 class="mb-sm-0 font-size-18">Campos</h4>
+
+            <div class="page-title-right">
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item"><a href="javascript: void(0);">Parametrización</a></li>
+                    <li class="breadcrumb-item active">Campos</li>
+                </ol>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- end page title -->
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="mb-sm-0 font-size-18">Campos</h4>
+                <br>
+                <p class="card-title-desc">Esta opción permite la asignación de validaciones obligatorias, de cruce
+                    contable y entre formatos para los diferentes campos de una tabla.
+                </p>
+                <div class="">
+                    <a href="/parametrizacion/add_campo/{{id}}" class="btn btn-success .btn-circle btn-sm mr-auto">
+                        <span class="icon text-white-50">
+                            <i class="mdi mdi-check-all"></i>
+                        </span>
+                        <span class="text">Nuevo</span>
+                    </a>
+                </div>
+                <br>
+                <div class="table-responsive">
+                    <table id="datatable-buttons" class="table table-bordered dt-responsive nowrap w-100">
+                        <thead>
+                            <tr align="center">
+                                <th>Campo</th>
+                                <th>Descripción</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each campos}}
+                            <tr>
+                                <td align="left"> {{nombre}}</td>
+                                <td align="center">{{descripcion}}</td>
+                                <td align="center">
+                                    <a class="btn btn-success btn-sm" href="/parametrizacion/validaciones/{{id}}">
+                                        <spanclass="icon text-white-50 d-inline-block" tabindex="0" data-placement="top"
+                                            title="Editar"><i class="fas fa-pencil-alt" data-toggle="tooltip"> </i>
+                                            </span>
+                                            <span class="text"> </span>
+                                    </a>
+
+                                    <a class="btn btn-danger btn-sm" href="/parametrizacion/campos/delete/{{id}}"
+                                        onclick="return preguntarEliminar_campo()">
+                                        <span class="icon text-white-50 d-inline-block" tabindex="0"
+                                            data-placement="top" title="Eliminar"><i class="fas fa-trash"
+                                                data-toggle="tooltip"> </i> </span>
+                                        <span class="text"> </span>
+                                    </a>
+                                </td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                        <tfoot>
+                            <tr align="center">
+                                <th>Campo</th>
+                                <th>Descripción</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </tfoot>
+
+                    </table>
+
+                </div>
+            </div>
+
+            <div class="">
+                <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-3"></div>
+                    <div class="col-md-3"></div>
+                    <div class="col-md-3">
+                        <a href="/parametrizacion/list"
+                            class="btn btn-sm mr-auto btn-success btn-lg waves-effect waves-light ml-auto">
+                            Regresar a la lista
+                        </a>
+                    </div>
+                    <br>
+                </div>
+                <div class="row">
+                    <br>
+                </div>
+
+            </div>
+
+            <br>
+        </div>
+    </div>
+</div>
+<!-- end page title -->
+
+<script type="text/javascript">
+    function preguntarEliminar_campo() {
+        var respuesta = confirm('¿Está seguro que desea eliminar el campo?. Recuerde que esto borrará las validaciones asociadas.');
+        if (respuesta == true) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    };
+</script>

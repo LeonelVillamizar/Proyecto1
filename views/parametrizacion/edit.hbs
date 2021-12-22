@@ -1,0 +1,217 @@
+<!-- start page title -->
+<div class="row">
+    <div class="col-12">
+        <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+            <h4 class="mb-sm-0 font-size-18">Formatos</h4>
+
+            <div class="page-title-right">
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item"><a href="javascript: void(0);">Parametrización</a></li>
+                    <li class="breadcrumb-item active">Formatos</li>
+                    <li class="breadcrumb-item active">Editar</li>
+                </ol>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- end page title -->
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="tab-content p-3 text-muted">
+
+                    <div class="form-group row">
+                        <hr color="blue" size=3>
+                        <br>
+                        <h4 class="mb-sm-0 font-size-18">Editar Formato</h4>
+                        <br>
+                        <p class="card-title-desc">Editar la información general asociada al formato.
+                        </p>
+
+
+                        <form class="user" id="Form1" name="Form1" action="/parametrizacion/edit/{{formato.id}}"
+                            method="POST" autocomplete="off">
+
+                            <div class="tab-content p-3 text-muted">
+                                <div class="tab-pane active" id="home-1" role="tabpanel">
+                                    <div class="form-group row">
+                                        <!-- FORMATO -->
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label for="basicpill-firstname-input">Nombre</label>
+                                                    <input type="text" maxlength="200" class="form-control"
+                                                        name="nombre" value="{{formato.nombre}}">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label for="basicpill-phoneno-input">Periodicidad</label>
+                                                    <select class="form-control" name="periodicidad" id="periodicidad"
+                                                        required>
+                                                        <option selected>{{formato.periodicidad}}</option>
+                                                        <option value="Mensual">Mensual</option>
+                                                        <option value="Trimestral">Trimestral</option>
+                                                        <option value="Semestral">Semestral</option>
+                                                        <option value="Anual">Anual</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label for="basicpill-phoneno-input"> Posee cruce con
+                                                        balance</label>
+                                                    <select class="form-control" name="cruce_balance" id="cruce_balance"
+                                                        required>
+                                                        <option selected>{{formato.cruce_balance}}</option>
+                                                        <option value="Si">Si</option>
+                                                        <option value="No">No</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label for="basicpill-email-input">Posee cruce con
+                                                        formato</label>
+                                                    <select class="form-control" name="cruce_formato" id="cruce_formato"
+                                                        required>
+                                                        <option selected>{{formato.cruce_formato}}</option>
+                                                        <option value="Si">Si</option>
+                                                        <option value="No">No</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label for="basicpill-email-input">Vicepresidencias</label>
+                                                    <select onchange="consultar_areas(this.value)" class="form-control"
+                                                        name="vicepresidencias" id="vicepresidencias">
+                                                        <option value="{{formato.id_vicepresidencia}}" selected>
+                                                            {{formato.vicepresidencia}}</option>
+                                                        {{#each vicepresidencias}}
+                                                        <option value="{{id}}">{{vicepresidencia}}</option>
+                                                        {{/each}}
+                                                    </select>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label for="basicpill-email-input">Estado del formato</label>
+                                                    <select class="form-control" name="estado" id="estado" required>
+                                                        <option selected>{{formato.estado}}</option>
+                                                        <option value="Activo">Activo</option>
+                                                        <option value="Inactivo">Inactivo</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label for="basicpill-email-input">Áreas</label>
+                                                    <select class="form-control" name="area" id="area" required>
+                                                        <option value="{{formato.id_area}}" selected>{{formato.area}}
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label for="basicpill-address-input">Descripción</label>
+                                                    <textarea id="basicpill-address-input" maxlength="5000"
+                                                        class="form-control" name="descripcion"
+                                                        rows="2">{{formato.descripcion}}</textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label for="basicpill-email-input">Rango de datos (Dígite solo la
+                                                        columna, fila inicial y columna donde termina, sin encabezados
+                                                        (Ejm: C9:Z)</label>
+                                                    <input type="text" class="form-control" id="rango" name="rango"
+                                                        value="{{formato.rango}}" required />
+                                                </div>
+                                            </div>
+                                        
+
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label for="basicpill-email-input">Nombre de la hoja donde se
+                                                        encuentran los datos
+                                                        para leer</label>
+                                                        <input type="text" class="form-control" id="nombre_hoja"
+                                                        name="nombre_hoja" value="{{formato.nombre_hoja}}" required />
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-3 col-md-offset-2"></div>
+                                    <div class="col-md-3 col-md-offset-2"></div>
+                                    <div class="col-md-3 col-md-offset-2">
+                                        <button class="btn btn-primary btn-lg waves-effect waves-light ml-auto">Enviar
+                                            formulario</button>
+                                    </div>
+                                    <div class="col-md-3 col-md-offset-2">
+                                        <a href="/parametrizacion/list"
+                                            class="btn btn-success btn-lg waves-effect waves-light ml-auto">
+                                            Regresar a la lista
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end card body -->
+    </div>
+    <!-- end col -->
+</div>
+
+<script>
+    function consultar_areas(id) {
+        $.ajax({
+            url: '/parametrizacion/pregunta/consultar/areas',
+            method: 'POST',
+            data: {
+                'array': JSON.stringify(id)
+            },
+            success: function (consulta) {
+                console.log(consulta);
+                let v_area = $("#area");
+                v_area.find('option').remove();
+                $("#area").append(`<option value="">Seleccione...</option>`)
+                consulta.consulta.forEach(consultapgta1 => {
+                    $("#area").append(`<option value="${consultapgta1.id_area}">${consultapgta1.nombre}</option>`)
+                })
+            }
+        })
+    }
+</script>

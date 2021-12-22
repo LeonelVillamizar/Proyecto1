@@ -1,0 +1,281 @@
+<!-- start page title -->
+<div class="row">
+    <div class="col-12">
+        <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+            <h4 class="mb-sm-0 font-size-18">Subir formato</h4>
+
+            <div class="page-title-right">
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item"><a href="javascript: void(0);">Carga de formatos</a></li>
+                    <li class="breadcrumb-item active">Subir archivo</li>
+                </ol>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- end page title -->
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <h4 class="card-title">Subir archivo</h4>
+                <p class="card-title-desc">Seleccione el archivo que contiene la información del formato
+                    seleccionado.
+                </p>
+                <div>
+                    <form id="form_carga" name="form_carga" class="user" action="/formatos/subir_archivo/{{id_formato}}"
+                        method="POST" enctype="multipart/form-data">
+                        <div class="row">
+                            <div id="loading" class="col-lg-12" style="text-align: center; display:none">
+                                <button type="button" class="btn header-item noti-icon right-bar-toggle waves-effect">
+                                    <i class="bx bx-cog bx-spin" style="color: #FF6600;"></i>
+                                </button>
+                                <label for="basicpill-phoneno-input">Loading...</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="mb-3">
+                                    <label for="basicpill-phoneno-input">Mes</label>
+                                    <select class="form-control" name="mes" id="mes" onchange="ObligatorioMes();" required>
+                                        <option selected>Seleccione...</option>
+                                        <option value="01">Enero</option>
+                                        <option value="02">Febrero</option>
+                                        <option value="03">Marzo</option>
+                                        <option value="04">Abril</option>
+                                        <option value="05">Mayo</option>
+                                        <option value="06">Junio</option>
+                                        <option value="07">Julio</option>
+                                        <option value="08">Agosto</option>
+                                        <option value="09">Septiembre</option>
+                                        <option value="10">Octubre</option>
+                                        <option value="11">Noviembre</option>
+                                        <option value="12">Diciembre</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="mb-3">
+                                    <label for="basicpill-phoneno-input">Año</label>
+                                    <select class="form-control" name="ano" id="ano" onchange="ObligatorioAno();" required>
+                                        <option selected>Seleccione</option>
+                                        <option value="{{ano_ant}}">{{ano_ant}}</option>
+                                        <option value="{{ano}}">{{ano}}</option>
+                                        <option value="{{ano_act}}">{{ano_act}}</option>
+                                        <option value="{{ano_act1}}">{{ano_act1}}</option>
+                                        <option value="{{ano_act2}}">{{ano_act2}}</option>
+                                        <option value="{{ano_act3}}">{{ano_act3}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="mb-3">
+                                    <input class="form-control" type="file" id="file" name="upload" accept=".csv, .xlsx"
+                                        required />
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="mb-3">
+                                    <input id="rango" name="rango" type="hidden" class="form-control"
+                                        value="{{rango_string}}">
+                                </div>
+                                <div class="mb-3">
+                                    <input id="nombre_hoja" name="nombre_hoja" type="hidden" class="form-control"
+                                        value="{{nombre_hoja}}">
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+                    <div id="carga" class="row" style="display: none">
+                        <label for="basicpill-phoneno-input">Leyendo datos del archivo...</label>
+                        <div class="progress" style="height: 30px">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                                aria-valuenow="75" id="barra_estado_carga" name="barra_estado_carga" aria-valuemin="0"
+                                aria-valuemax="100" style="width: 0%"></div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary btn-block" id="btnEnviar" name="btnEnviar"
+                            onclick="submitForms({{id_formato}})">
+                            Guardar
+                        </button>
+                        <a href="/formatos/cargar" class="btn btn-success btn-block">
+                            Regresar
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div> <!-- end col -->
+
+
+<div class="card-body">
+    <div class="row">
+        <div class="table-responsive">
+            <table id="datatable-buttons" class="table table-bordered dt-responsive nowrap w-100">
+                <thead>
+                    <tr align="center">
+                        <th>Documento</th>
+                        <th>Período</th>
+                        <th>Tamaño</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each formatos}}
+                    <tr>
+                        <td><a href={{location}}>{{nombre}}</a></td>
+                        <td align="center">{{periodo}}</td>
+                        <td align="right">{{size}}</td>
+                        <td align="center">
+                            <a href="/formatos/delete/{{id}}" type="button" class="btn btn-danger .btn-circle"
+                                onclick="return preguntarEliminar()" id="btnEliminar">
+                                <span title="Eliminar formato" class="fas fa-trash-alt"></span>
+                            </a>
+                            <a href="/formatos/log_errores/{{id}}" type="button" class="btn btn-warning .btn-circle"
+                                id="btnLog">
+                                <span title="Ver log de errores" class="fas fa-exclamation-circle"></span>
+                            </a>
+                        </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+                <tfoot>
+                    <tr align="center">
+                        <th>Documento</th>
+                        <th>Período</th>
+                        <th>Tamaño</th>
+                        <th>Acciones</th>
+                    </tr>
+                </tfoot>
+
+            </table>
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    function preguntarEliminar() {
+        var respuesta = confirm('¿Está seguro que desea eliminar este formato?');
+        if (respuesta == true) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    };
+</script>
+
+<script>
+    function submitForms(id) {
+        let obj = document.getElementById('file');
+        var mes = document.getElementById('mes').value;
+        var ano = document.getElementById('ano').value;
+        var rango = document.getElementById('rango').value;
+        var hoja = document.getElementById('nombre_hoja').value;
+
+        let formData = new FormData(document.getElementById('form_carga'));
+        if (!obj.files) {
+            return;
+        }
+        var f = obj.files[0];
+        var reader = new FileReader();
+        //console.log('hoja', hoja);
+        reader.onload = function (e) {
+            var data = e.target.result;
+            console.log('data', data);
+            var wb = XLSX.read(data, {
+                type: 'binary',
+                detectDates: true,
+                dateNF: "yyyy-mm-dd;@"
+            });
+            //var worksheet = wb.Sheets[wb.SheetNames[0]];
+            var worksheet = wb.Sheets[hoja];
+            const A1 = worksheet['!ref'];
+            buscarpuntos = A1.indexOf(":");
+            extraer = A1.substring(buscarpuntos + 1, A1.lenght);
+            ultfila = extraer.replace(/\D+/g, "");
+
+            //Encontrar rango
+            const dataExcel = XLSX.utils.sheet_to_json(worksheet, { header: 1, range: rango + ultfila, raw: false });
+            //console.log('datos', dataExcel);
+            let objeto = [formData, dataExcel];
+
+            $.ajax({
+                url: '/formatos/subir_archivo/{{id_formato}}',
+                method: 'POST',
+                type: "post",
+                dataType: "html",
+                cache: false,
+                contentType: false,
+                processData: false,
+                data: formData
+            })
+
+            var progreso = 0;
+            $.ajax({
+                url: '/formatos/datosxlsx/{{id_formato}}',
+                method: 'POST',
+                data: {
+                    'datosxlsx': JSON.stringify(dataExcel),
+                    'mes': mes,
+                    'ano': ano
+                },
+                beforeSend: function () {
+                    $("#carga").css("display", "block")
+                    var intervalo1 = setInterval(function () {
+                        progreso = progreso + 1;
+                        $("#barra_estado_carga").css("width", progreso + "%").attr("arial-valuenow", progreso).text(progreso + "%");
+                        if (progreso >= 25) {
+                            clearInterval(intervalo1);
+                        }
+                    }, 200);
+                },
+                success: function () {
+                    var intervalo = setInterval(function () {
+                        progreso = progreso + 1;
+                        $("#barra_estado_carga").css("width", progreso + "%").attr("arial-valuenow", progreso).text(progreso + "%");
+                        if (progreso >= 100) {
+                            clearInterval(intervalo);
+                            location.reload();
+                        }
+                    }, 50);
+                },
+            })
+        };
+        reader.readAsBinaryString(f);
+        //window.location = '/formatos/subir_archivo/' + id;
+    }
+</script>
+<script>
+    function ObligatorioMes() {
+        valor = document.getElementById("mes").value;
+        console.log(valor);
+        if (valor === 'Seleccione...') {
+            alert("El campo Mes está vacio y es OBLIGATORIO");
+            return false;
+        }
+    }
+
+    function ObligatorioAno() {
+        valor = document.getElementById("ano").value;
+        console.log(valor);
+        if (valor === 'Seleccione...') {
+            alert("El campo Año está vacio y es OBLIGATORIO");
+            return false;
+        }
+        // window.location = '/formatos/subir_archivo/' + id;
+    }
+</script>

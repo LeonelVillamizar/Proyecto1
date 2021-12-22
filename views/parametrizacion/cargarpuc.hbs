@@ -1,0 +1,242 @@
+<!-- start page title -->
+<div class="row">
+    <div class="col-12">
+        <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+            <h4 class="mb-sm-0 font-size-18">Cargar Balance</h4>
+
+            <div class="page-title-right">
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item"><a href="javascript: void(0);">Parametrización</a></li>
+                    <li class="breadcrumb-item active">Balance</li>
+                </ol>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Cargar Balance</h4>
+
+                <br>
+                <p class="card-title-desc">El siguiente módulo permite cargar los archivos correspondientes al Balance.
+                </p>
+
+                <!-- Tab panes -->
+                <div class="tab-content p-3 text-muted">
+                    <p class="mb-0">
+                        <br>
+                    <div class="form-group row">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <form class="user" action="/parametrizacion/cargarpuc" method="POST"
+                                            autocomplete="off" enctype="multipart/form-data">
+                                            <div class="row">
+
+                                                <!-- <div class="col-xs-4 col-md-4">
+                                                    <label for="campo">Nro. Preliminar</label>
+                                                    <input type="text" id="nro_preliminar" name="nro_preliminar"
+                                                        class="form-control" required />
+                                                </div> -->
+
+                                                <div class="col-xs-4 col-md-4">
+                                                    <label>Fecha de actualización</label>
+                                                    <div class="input-group" id="datepicker1">
+                                                        <input type="text" id="fecha_actualizacion"
+                                                            name="fecha_actualizacion" class="form-control"
+                                                            value="{{hoy}}" disabled />
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-xs-4 col-md-4">
+                                                    <label for="campo">Usuario</label>
+                                                    <input type="text" id="fecha_actualizacion"
+                                                        name="fecha_actualizacion" class="form-control"
+                                                        value="{{usuario.nombre}}" disabled />
+                                                    <br>
+                                                </div>
+
+                                                <div class="col-xs-4 col-md-4">
+                                                    <label for="message">Período</label>
+                                                    <select class="form-control" name="periodo" id="periodo" required>
+                                                        <option value="">Seleccione...</option>
+                                                        <option value="01">Enero</option>
+                                                        <option value="02">Febrero</option>
+                                                        <option value="03">Marzo</option>
+                                                        <option value="04">Abril</option>
+                                                        <option value="05">Mayo</option>
+                                                        <option value="06">Junio</option>
+                                                        <option value="07">Julio</option>
+                                                        <option value="08">Agosto</option>
+                                                        <option value="09">Septiembre</option>
+                                                        <option value="10">Octubre</option>
+                                                        <option value="11">Noviembre</option>
+                                                        <option value="12">Diciembre</option>
+                                                    </select>
+                                                </div>
+
+                                                <div class="col-lg-6">
+                                                    <div class="mb-3">
+                                                        <label for="basicpill-phoneno-input">Año</label>
+                                                        <select class="form-control" name="ano" id="ano" required>
+                                                            <option selected>Seleccione</option>
+                                                            <option value="{{ano_ant}}">{{ano_ant}}</option>
+                                                            <option value="{{ano}}">{{ano}}</option>
+                                                            <option value="{{ano_act}}">{{ano_act}}</option>
+                                                            <option value="{{ano_act1}}">{{ano_act1}}</option>
+                                                            <option value="{{ano_act2}}">{{ano_act2}}</option>
+                                                            <option value="{{ano_act3}}">{{ano_act3}}</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-xs-4 col-md-4">
+                                                    <label for="message">Balance</label>
+                                                    <select class="form-control" name="puc_libromayor"
+                                                        id="puc_libromayor" required>
+                                                        <option value="">Seleccione...</option>
+                                                        <option value="Balance">Balance</option>
+                                                        <!-- <option value="Libro mayor">Libro mayor</option> -->
+                                                    </select>
+                                                </div>
+
+                                                <div class="col-xs-4 col-md-4">
+                                                    <label for="formFile" class="form-label">Cargar archivo</label>
+                                                    <input class="form-control" type="file" id="file" name="upload"
+                                                        accept=".csv" />
+                                                </div>
+                                            </div>
+
+
+                                            <div class="row">
+
+                                                <div class="col-md-3 col-md-offset-2"></div>
+                                                <div class="col-md-3 col-md-offset-2"></div>
+                                                <div class="col-md-3 col-md-offset-2"></div>
+                                                <div class="col-md-3 col-md-offset-2">
+                                                    <br>
+                                                    <br>
+                                                    <button
+                                                        class="btn btn-primary btn-lg waves-effect waves-light ml-auto">Envíar
+                                                        formulario</button>
+
+                                                </div>
+                                            </div>
+
+                                        </form>
+                                    </div>
+                                </div>
+
+
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="table-responsive">
+                                            <table id="datatable-buttons"
+                                                class="table table-bordered dt-responsive nowrap w-100">
+                                                <thead>
+                                                    <tr align="center">
+                                                        <th>Archivo</th>
+                                                        <th>Fecha actualización</th>
+                                                        <th>Balance</th>
+                                                        <th>Acciones</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {{#if archivo_puc.id}}
+                                                    <tr>
+                                                        <td align="left"> {{archivo_puc.nombre}}</td>
+                                                        <td align="center">{{archivo_puc_info.fecha_actualizacion}}</td>
+                                                        <td align="center">{{archivo_puc_info.puc_libromayor}}</td>
+                                                        <td align="center">
+                                                            <a class="btn btn-primary btn-sm"
+                                                                href="/parametrizacion/datos_puc/{{archivo_puc.id}}">
+                                                                <span class="icon text-white-50 d-inline-block"
+                                                                    tabindex="0" data-placement="top" title="Ver detalle balance"><i
+                                                                        class="fas fa-eye" data-toggle="tooltip">
+                                                                    </i> </span>
+                                                                <span class="text"> </span>
+                                                            </a>
+                                                            <a class="btn btn-success btn-sm"
+                                                                href="/parametrizacion/detalle_cambios_puc/{{archivo_puc.id}}">
+                                                                <span class="icon text-white-50 d-inline-block"
+                                                                    tabindex="0" data-placement="top" title="Ver cambios balance"><i
+                                                                        class="fas fa-eye" data-toggle="tooltip">
+                                                                    </i> </span>
+                                                                <span class="text"> </span>
+                                                            </a>
+                                                             <a class="btn btn-warning btn-sm"
+                                                                href="/parametrizacion/ecuacion_contable/{{archivo_puc.id}}">
+                                                                <span class="icon text-white-50 d-inline-block"
+                                                                    tabindex="0" data-placement="top" title="Ver ecuacion contable"><i
+                                                                        class="fas fa-eye" data-toggle="tooltip">
+                                                                    </i> </span>
+                                                                <span class="text"> </span>
+                                                            </a>
+
+
+                                                        </td>
+                                                    </tr>
+                                                    {{/if}}
+                                                    <!-- {{#if archivo_libro.id}}
+                                                    <tr>
+                                                        <td align="left"> {{archivo_libro.nombre}}</td>
+                                                        <td align="center">{{archivo_libro_info.fecha_actualizacion}}
+                                                        </td>
+                                                        <td align="center">{{archivo_libro_info.puc_libromayor}}</td>
+                                                        <td align="center">
+                                                            <a class="btn btn-primary btn-sm"
+                                                                href="/parametrizacion/datos_libro/{{archivo_libro.id}}">
+                                                                <span class="icon text-white-50 d-inline-block"
+                                                                    tabindex="0" data-placement="top" title="Ver"><i
+                                                                        class="fas fa-eye" data-toggle="tooltip">
+                                                                    </i> </span>
+                                                                <span class="text"> </span>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                    {{/if}} -->
+                                                </tbody>
+                                                <tfoot>
+                                                    <tr align="center">
+                                                        <th>Archivo</th>
+                                                        <th>Fecha actualización</th>
+                                                        <th>Balance</th>
+                                                        <th>Acciones</th>
+                                                    </tr>
+                                                </tfoot>
+
+                                            </table>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var file = document.getElementById('file');
+
+    file.onchange = function (e) {
+        var ext = this.value.match(/\.([^\.]+)$/)[1];
+        switch (ext) {
+            case 'csv':
+                break;
+            default:
+                alert('Solo se permiten seleccionar archivos .csv');
+                this.value = '';
+        }
+    };
+</script>

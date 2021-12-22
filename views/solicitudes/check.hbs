@@ -1,0 +1,196 @@
+<div class="card shadow mb-4">
+    <!-- {{>message}}-->
+
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-file-earmark-plus-fill" viewBox="0 0 16 16">
+                <path
+                    d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0zM9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1zM8.5 7v1.5H10a.5.5 0 0 1 0 1H8.5V11a.5.5 0 0 1-1 0V9.5H6a.5.5 0 0 1 0-1h1.5V7a.5.5 0 0 1 1 0z" />
+            </svg>
+            Gestionar solicitudes de pruebas {{tp_usuario}}
+        </h6>
+    </div>
+
+    <!-- Nested Row within Card Body -->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="p-5">
+
+                <form class="user" action="/solicitudes/check/{{solicitud.id}}" method="POST">
+                    <div class="form-group row">
+
+
+                        <div class="form-group col-sm-6 mb-3 mb-sm-0">
+                            <label class="label label-default">Area:</label>
+                            <input type="text" class="form-control " name="area" id="area" value="{{solicitud.area}}"
+                                placeholder="" disabled>
+                            <br>
+                        </div>
+
+
+                        <div class="form-group col-sm-6 mb-3 mb-sm-0">
+                            <label class="label label-default">Nombre de quien propone:</label>
+                            <input type="text" class="form-control " name="propuesta" id="propuesta"
+                                value="{{solicitud.proponente}}" placeholder="" disabled>
+                            <br>
+                        </div>
+
+
+                        <div class="form-group col-sm-6 mb-3 mb-sm-0">
+                            <label class="label label-default">Prueba Sugerida:</label>
+                            <input type="text" class="form-control " name="prueba" id="prueba" placeholder=""
+                                value="{{solicitud.prueba}}" disabled>
+                            <br>
+                        </div>
+
+
+                        <div class="form-group col-sm-6 mb-3 mb-sm-0">
+                            <label class="label label-default">Producto:</label>
+                            <input type="text" class="form-control " name="producto" id="producto" placeholder=""
+                                value="{{solicitud.producto}}" disabled>
+                            <br>
+                        </div>
+
+                        <div class="form-group col-sm-6 mb-3 mb-sm-0">
+                            <label for="exampleFormControlSelect1">Sociedad:</label>
+                            <input type="text" class="form-control " name="sociedad" id="sociedad" placeholder=""
+                                value="{{solicitud.sociedad}}" disabled>
+
+                            <br>
+                        </div>
+
+                        <div class="form-group col-sm-6 mb-3 mb-sm-0">
+                            <label for="exampleFormControlSelect1">Prioridad:</label>
+                            <input type="text" class="form-control " name="prioridad" id="prioridad" placeholder=""
+                                value="{{solicitud.prioridad}}" disabled>
+                        </div>
+
+                        <div class="form-group col-sm-6 mb-3 mb-sm-0">
+                            <label class="label label-default">Contexto:
+
+                            </label>
+                            <br>
+                            <br>
+
+                            <textarea class="form-control" name="contexto" id="contexto" placeholder="" wrap="soft"
+                                disabled>{{solicitud.contexto}}</textarea>
+                        </div>
+                        <div class="form-group col-sm-6 mb-3 mb-sm-0">
+                            <label class="label label-default">Ha sido revisando por alguna otra área? (Auditoria
+                                Interna, Monitoreo). Que información tienes?:</label>
+                            <br>
+                            <textarea class="form-control" name="auditoria" id="auditoria" placeholder="" wrap="soft"
+                                disabled>{{solicitud.auditoria}}</textarea>
+                        </div>
+
+                    </div>
+                    <br>
+                    <hr>
+                    {{#if estado}}
+
+                    <div class="form-group row">
+
+                        <div class="form-group col-sm-12 mb-6 mb-sm-0">
+                            <label class="label label-default">Fecha Estado - {{estado}}</label>
+                            <br>
+                            <input type="text" class="form-control " name="fechafin" id="fechafin" placeholder=""
+                                value="{{solicitud.fecha_fin}}" disabled>
+
+                        </div>
+                        <div class="form-group col-sm-12 mb-6 mb-sm-0">
+                            <label class="label label-default">Comentarios</label>
+                            <br>
+                            <textarea class="form-control" name="auditoria1" id="auditoria1" placeholder="" wrap="soft"
+                                disabled>{{solicitud.informacion_revisado}}</textarea>
+                        </div>
+                    </div>
+                    {{else}}
+                    
+                    {{#if tp_usuario}}
+
+                    <div class="form-group row">
+
+                        <div class="form-group col-sm-6 mb-3 mb-sm-0">
+                            <label class="label label-default">Seleccionar Estado</label>
+                            <select class="form-control" name="estado" id="estado" required>
+                                <option value="">- Elegir Opcion</option>
+                                {{#each tipo_estado_solicitud}}
+                                <option value={{id}}>{{nombre}}</option>
+                                {{/each}}
+                            </select>
+                            <br>
+                        </div>
+                        <div class="form-group col-sm-6 mb-3 mb-sm-0">
+                            <label class="label label-default">Fecha Ejecución</label>
+                            <input class="form-control input-daterange-datepicker" type="text" id="ejecucion"
+                                name="ejecucion" value="">
+                        </div>
+                        <div class="form-group col-sm-6 mb-3 mb-sm-0">
+                            <label class="label label-default">Comentarios</label>
+                            <textarea class="form-control" onkeyup="contarcaracteresComentarios()"
+                                onpaste="contarcaracteresComentarios()" name="informacion" id="informacion"
+                                placeholder="" wrap="soft" required maxlength="5000"></textarea>
+                            <div id="reseditar">0 caracteres</div>
+                        </div>
+                    </div>
+                    {{/if}}
+
+
+                    {{/if}}
+
+                    <br>
+
+                    <div class="row">
+                        {{#if tp_usuario}}
+
+                        {{#if estado}}
+
+                        {{else}}
+                        <div class="col-lg-6">
+                            <button class="btn btn-warning btn-block">
+                                Guardar
+                            </button>
+                        </div>
+                        {{/if}}
+                        {{/if}}
+
+                        <div class="col-lg-6">
+
+                            <a href="/solicitudes/list" class="btn btn-secondary btn-block">
+                                Cancelar
+                            </a>
+                        </div>
+                        <hr>
+                    </div>
+                    <br>
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function contarcaracteresComentarios() {
+
+        //Numero de caracteres permitidos
+        let total = 5000;
+
+        setTimeout(function () {
+            let valor = document.getElementById('informacion');
+            let respuesta = document.getElementById('reseditar');
+            let cantidad = valor.value.length;
+            document.getElementById('reseditar').innerHTML = cantidad + ' caracteres de ' + (total - cantidad);
+
+            if (cantidad > total) {
+                respuesta.style.color = "red";
+            }
+            else {
+                //  respuesta.style.color = "black";
+            }
+        }, 10);
+
+    }
+</script>

@@ -1,0 +1,187 @@
+<!-- start page title -->
+<div class="row">
+    <div class="col-12">
+        <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+            <h4 class="mb-sm-0 font-size-18">Cuentas de nodos</h4>
+
+            <div class="page-title-right">
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item"><a href="javascript: void(0);">Parametrización</a></li>
+                    <li class="breadcrumb-item active">Nodos</li>
+                    <li class="breadcrumb-item active">Cuentas</li>
+                </ol>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- end page title -->
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="tab-content p-3 text-muted">
+                    <div class="form-group row">
+                        <hr color="blue" size=3>
+                        <br>
+                        <h4 class="mb-sm-0 font-size-18">Agregar cuentas al nodo</h4>
+                        <br>
+                        <p class="card-title-desc">Esta opción permite agregar o editar las cuentas asignadas a cada uno
+                            de los Nodos.
+                        </p>
+
+                        <!-- VALIDACIONES OBLIGATORIAS -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <form class="repeater" id="form_cuentas" name="form_cuentas" autocomplete="off"
+                                            action="/parametrizacion/add_cuenta/{{id_layout}}" method="POST">
+                                            <div data-repeater-list="group_cuentas" id="group_cuentas"
+                                                name="group_cuentas">
+                                                <div data-repeater-item class="row">
+
+                                                    <div class="mb-3 col-lg-2">
+                                                        <label for="campo">Cuenta</label>
+                                                        <input type="text" maxlength="200" id="cuenta" name="cuenta"
+                                                            class="form-control" onkeypress="return valideKey(event);"
+                                                            required>
+                                                    </div>
+
+                                                    <div class="mb-3 col-lg-6">
+                                                        <label for="message">Descripción</label>
+                                                        <textarea id="descripcion" maxlength="3000" name="descripcion"
+                                                            class="form-control"></textarea>
+                                                    </div>
+
+                                                    <div class="mb-3 col-lg-2 align-self-center">
+                                                        <label for="message"></label>
+                                                        <button data-repeater-delete type="button"
+                                                            class="btn btn-danger waves-effect waves-light btn-lg">
+                                                            <i class="bx bx-trash label-icon"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <input data-repeater-create type="button"
+                                                class="btn btn-success mt-3 mt-lg-0" value="Adicionar campo" />
+                                        </form>
+                                        <br>
+                                        <hr>
+
+                                        <form class="repeater" id="form_edit_cuentas" name="form_edit_cuentas"
+                                            action="/parametrizacion/add_cuenta/{{id_layout}}" method="POST"
+                                            autocomplete="off">
+                                            {{#each cuentas}}
+                                            <div data-repeater-list="group" id="group" name="group">
+                                                <div data-repeater-item class="row">
+                                                    <input type="hidden" id="id_val" maxlength="200" name="id"
+                                                        class="form-control" value={{id}}>
+
+                                                    <div class="mb-3 col-lg-2">
+                                                        <label for="campo">Cuenta</label>
+                                                        <input type="text" id="cuenta" name="cuenta"
+                                                            class="form-control" value="{{cuenta}}"
+                                                            onkeypress="return valideKey(event);">
+                                                    </div>
+
+                                                    <div class="mb-3 col-lg-6">
+                                                        <label for="message">Descripción</label>
+                                                        <textarea id="descripcion" name="descripcion" maxlength="3000"
+                                                            class="form-control">{{descripcion}}</textarea>
+                                                    </div>
+
+                                                    <div class="mb-3 col-lg-2 align-self-center">
+                                                        <label for="message"></label>
+                                                        <a data-repeater-delete type="button"
+                                                            href="/parametrizacion/cuenta/delete/{{id}}"
+                                                            onclick="return preguntarEliminar()"
+                                                            class="btn btn-danger waves-effect waves-light btn-lg">
+                                                            <i class="bx bx-trash label-icon"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {{/each}}
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3 col-md-offset-2"></div>
+                        <div class="col-md-3 col-md-offset-2"></div>
+                        <div class="col-md-3 col-md-offset-2">
+                            <button id="btnEnviar" name="btnEnviar" onclick="submitForms()"
+                                class="btn btn-primary btn-lg waves-effect waves-light ml-auto">Enviar
+                                formulario</button>
+                        </div>
+                        <div class="col-md-3 col-md-offset-2">
+                            <a href="/parametrizacion/list_layout"
+                                class="btn btn-success btn-lg waves-effect waves-light ml-auto">
+                                Regresar a la lista
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- end card body -->
+    </div>
+    <!-- end col -->
+</div>
+
+<script>
+    function submitForms() {
+        $.ajax({
+            url: '/parametrizacion/add_cuentas/{{id_layout}}',
+            method: 'POST',
+            data: {
+                'form_cuentas': JSON.stringify($("#form_cuentas").serializeArray()),
+                'form_edit_cuentas': JSON.stringify($("#form_edit_cuentas").serializeArray()),
+            },
+            success: function(){
+                location.reload();
+            }
+
+        })
+        //location.reload();
+    }
+</script>
+
+<script type="text/javascript">
+    function valideKey(evt) {
+
+        // code is the decimal ASCII representation of the pressed key.
+        var code = (evt.which) ? evt.which : evt.keyCode;
+
+        if (code == 8) { // backspace.
+            return true;
+        } else if (code >= 48 && code <= 57) { // is a number.
+            return true;
+        } else { // other keys.
+            return false;
+        }
+    }
+</script>
+
+<script>
+    function preguntarEliminar() {
+        var respuesta = confirm('¿Esta seguro que desea eliminar este elemento?');
+        if (respuesta == true) {
+            return true;
+        } else {
+            return false;
+        }
+    };
+</script>

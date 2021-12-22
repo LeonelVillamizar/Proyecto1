@@ -1,0 +1,54 @@
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Crear perfiles</h6>
+    </div>
+    <div class="pt-3 pl-3">
+        <a href="perfiles/addnew" class="btn btn-success .btn-circle btn-sm mr-auto">
+            <span class="icon text-white-50">
+                <i class="fas fa-check"></i>
+            </span>
+            <span class="text">Adicionar</span>
+        </a>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table id="example" class="table table-striped table-bordered" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Nombre perfil</th>
+                        <th style="text-align: center;">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each perfil}}
+                    <tr>
+                        <td>{{name}}</td>
+                        <td align="center">
+                            <a class="btn btn-warning btn-sm" href="/editnew/{{id}}">
+                                <span class="icon text-white-50">
+                                    <i class="fas fa-pen"></i>
+                                </span>
+                                <span class="text"></span>
+                            </a>
+                            <a href="javascript:EliminarProfile({{id}})" class="btn btn-danger .btn-circle btn-sm">
+                                <span class="icon text-white-50">
+                                    <i class="fas fa-trash"></i>
+                                </span>
+                                <span class="text"></span>
+                            </a>
+                        </td>
+                    </tr>
+                    {{/each}}
+
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th>Nombre perfil</th>
+                        <th style="text-align: center;">Acciones</th>
+                    </tr>
+                </tfoot>
+            </table>
+
+        </div>
+    </div>
+</div>

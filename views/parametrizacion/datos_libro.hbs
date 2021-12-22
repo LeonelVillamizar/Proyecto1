@@ -1,0 +1,248 @@
+<!-- start page title -->
+<div class="row">
+    <div class="col-12">
+        <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+            <h4 class="mb-sm-0 font-size-18">Detalle Libro Mayor</h4>
+
+            <div class="page-title-right">
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item"><a href="javascript: void(0);">Parametrización</a></li>
+                    <li class="breadcrumb-item active">Detalle Libro Mayor</li>
+                </ol>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Detalle Libro Mayor</h4>
+
+                <br>
+                <p class="card-title-desc">El siguiente módulo permite consultar el detalle de los datos almacenados del
+                    Libro mayor
+                </p>
+
+                <!-- Tab panes -->
+                <div class="tab-content p-3 text-muted">
+                    <p class="mb-0">
+                        <br>
+                    <div class="form-group row">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-xs-4 col-md-4">
+                                                <label for="campo">Nro. Preliminar</label>
+                                                <input type="text" id="nro_preliminar" name="nro_preliminar"
+                                                    class="form-control" value="{{info_libro.nro_preliminar}}"
+                                                    disabled />
+                                            </div>
+
+                                            <div class="col-xs-4 col-md-4">
+                                                <label>Fecha de actualización</label>
+                                                <div class="input-group" id="datepicker1">
+                                                    <input type="text" id="fecha_actualizacion"
+                                                        name="fecha_actualizacion" class="form-control"
+                                                        value="{{info_libro.fecha_actualizacion}}" disabled />
+                                                </div>
+                                            </div>
+
+                                            <div class="col-xs-4 col-md-4">
+                                                <label for="campo">Usuario</label>
+                                                <input type="text" id="fecha_actualizacion" name="fecha_actualizacion"
+                                                    class="form-control" value="{{info_libro.usuario}}" disabled />
+                                                <br>
+                                            </div>
+
+                                            <div class="col-xs-4 col-md-4">
+                                                <label for="message">Período</label>
+                                                <input type="text" id="fecha_actualizacion" name="fecha_actualizacion"
+                                                    class="form-control" value="{{info_libro.periodo}}" disabled />
+                                            </div>
+                                            <div class="col-xs-4 col-md-4">
+                                                <label for="message">PUC/Libro mayor</label>
+                                                <input type="text" id="fecha_actualizacion" name="fecha_actualizacion"
+                                                    class="form-control" value="{{info_libro.puc_libromayor}}"
+                                                    disabled />
+                                            </div>
+                                        </div>
+
+
+                                        <div class="row">
+                                        </div>
+
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-md-3 col-md-offset-2"></div>
+                                                <div class="col-md-3 col-md-offset-2"></div>
+                                                <div class="col-md-3 col-md-offset-2"></div>
+                                                <div class="col-md-3 col-md-offset-2">
+                                                    <a href="/parametrizacion/cargarpuc"
+                                                        class="btn btn-success btn-lg waves-effect waves-light ml-auto">
+                                                        Regresar a la lista
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="table-responsive">
+                                                <table id="datatable-buttons"
+                                                    class="table table-striped table-sm table-hover table-bordered">
+                                                    <thead>
+                                                        <tr align="center">
+                                                            <th>Fecha</th>
+                                                            <th>Nro de subsidiaria</th>
+                                                            <th>Nombre subsidiaria</th>
+                                                            <th>Cuenta contable</th>
+                                                            <th>Nombre cuenta auxiliar</th>
+                                                            <th>Nombre cuenta contable</th>
+                                                            <th>Centro de costo</th>
+                                                            <th>Nombre centro de costo</th>
+                                                            <th>Naturaleza de la cuenta</th>
+                                                            <th>Tipo de ajuste</th>
+                                                            <th>SEC1</th>
+                                                            <th>SEC2</th>
+                                                            <th>SEC3</th>
+                                                            <th>COD LOB</th>
+                                                            <th>COD LOB1</th>
+                                                            <th>Código cuenta LOB</th>
+                                                            <th>Descripción cuenta LOB</th>
+                                                            <th>Código ELIM</th>
+                                                            <th>Código consolidación</th>
+                                                            <th>Descripción cuenta consolidación</th>
+                                                            <th>Código cuenta regulatoria</th>
+                                                            <th>Descripción cuenta regulatoria</th>
+                                                            <th>Código cuenta PUC casa de Valores</th>
+                                                            <th>Descripción cuenta PUC casa de Valores</th>
+                                                            <th>Código cuenta IFRS</th>
+                                                            <th>Descripción cuenta IFRS</th>
+                                                            <th>Monto USD</th>
+                                                            <th>Monto promedio (USD)</th>
+                                                            <th>Entidad</th>
+                                                            <th>Indicador</th>
+                                                            <th>Código moneda</th>
+                                                            <th>Descripción moneda</th>
+                                                            <th>Importe (USD)</th>
+                                                            <th>Monto dólar mvto mensual PYG para átomos</th>
+                                                            <th>Monto moneda original</th>
+                                                            <th>Código origen</th>
+                                                            <th>Código región</th>
+                                                            <th>Descripción región</th>
+                                                            <th>Fecha mes</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        {{#each datos_libro}}
+                                                        <tr>
+                                                            <td align="left"> {{fecha}}</td>
+                                                            <td align="center">{{nro_subsidiaria}}
+                                                            </td>
+                                                            <td align="center">{{nombre_subsidiaria}}</td>
+                                                            <td align="center">{{cta_contable}}</td>
+                                                            <td align="center">{{nombre_cta_aux}}</td>
+                                                            <td align="center">{{nombre_cta_cble}}</td>
+                                                            <td align="center">{{centro_costo}}</td>
+                                                            <td align="center">{{nombre_centro_costo}}</td>
+                                                            <td align="center">{{naturaleza}}</td>
+                                                            <td align="center">{{tipo_ajuste}}</td>
+                                                            <td align="center">{{sec1}}</td>
+                                                            <td align="center">{{sec2}}</td>
+                                                            <td align="center">{{sec3}}</td>
+                                                            <td align="center">{{cod_lob}}</td>
+                                                            <td align="center">{{cod_lob1}}</td>
+                                                            <td align="center">{{cod_cta_lob}}</td>
+                                                            <td align="center">{{descripcion_cta_lob}}</td>
+                                                            <td align="center">{{cod_elim}}</td>
+                                                            <td align="center">{{cod_cta_consolidacion}}</td>
+                                                            <td align="center">{{descripcion_cta_consolidacion}}</td>
+                                                            <td align="center">{{cod_cta_regulatoria}}</td>
+                                                            <td align="center">{{descripcion_cta_regulatoria}}</td>
+                                                            <td align="center">{{cod_cta_puc_valores}}</td>
+                                                            <td align="center">{{descripcion_cta_puc_valores}}</td>
+                                                            <td align="center">{{cod_cta_ifrs}}</td>
+                                                            <td align="center">{{descripcion_cta_ifrs}}</td>
+                                                            <td align="center">{{monto_usd}}</td>
+                                                            <td align="center">{{monto_promedio_usd}}</td>
+                                                            <td align="center">{{entidad}}</td>
+                                                            <td align="center">{{indicador}}</td>
+                                                            <td align="center">{{cod_moneda}}</td>
+                                                            <td align="center">{{descripcion_moneda}}</td>
+                                                            <td align="center">{{importe_usd}}</td>
+                                                            <td align="center">{{monto_dolar_mvto_pyg}}</td>
+                                                            <td align="center">{{monto_moneda_original}}</td>
+                                                            <td align="center">{{cod_origen}}</td>
+                                                            <td align="center">{{cod_region}}</td>
+                                                            <td align="center">{{descripcion_region}}</td>
+                                                            <td align="center">{{fecha_mes}}</td>
+                                                        </tr>
+                                                        {{/each}}
+                                                    </tbody>
+                                                    <tfoot>
+                                                        <tr align="center">
+                                                            <th>Fecha</th>
+                                                            <th>Nro de subsidiaria</th>
+                                                            <th>Nombre subsidiaria</th>
+                                                            <th>Cuenta contable</th>
+                                                            <th>Nombre cuenta auxiliar</th>
+                                                            <th>Nombre cuenta contable</th>
+                                                            <th>Centro de costo</th>
+                                                            <th>Nombre centro de costo</th>
+                                                            <th>Naturaleza de la cuenta</th>
+                                                            <th>Tipo de ajuste</th>
+                                                            <th>SEC1</th>
+                                                            <th>SEC2</th>
+                                                            <th>SEC3</th>
+                                                            <th>COD LOB</th>
+                                                            <th>COD LOB1</th>
+                                                            <th>Código cuenta LOB</th>
+                                                            <th>Descripción cuenta LOB</th>
+                                                            <th>Código ELIM</th>
+                                                            <th>Código consolidación</th>
+                                                            <th>Descripción cuenta consolidación</th>
+                                                            <th>Código cuenta regulatoria</th>
+                                                            <th>Descripción cuenta regulatoria</th>
+                                                            <th>Código cuenta PUC casa de Valores</th>
+                                                            <th>Descripción cuenta PUC casa de Valores</th>
+                                                            <th>Código cuenta IFRS</th>
+                                                            <th>Descripción cuenta IFRS</th>
+                                                            <th>Monto USD</th>
+                                                            <th>Monto promedio (USD)</th>
+                                                            <th>Entidad</th>
+                                                            <th>Indicador</th>
+                                                            <th>Código moneda</th>
+                                                            <th>Descripción moneda</th>
+                                                            <th>Importe (USD)</th>
+                                                            <th>Monto dólar mvto mensual PYG para átomos</th>
+                                                            <th>Monto moneda original</th>
+                                                            <th>Código origen</th>
+                                                            <th>Código región</th>
+                                                            <th>Descripción región</th>
+                                                            <th>Fecha mes</th>
+                                                        </tr>
+                                                    </tfoot>
+
+                                                </table>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

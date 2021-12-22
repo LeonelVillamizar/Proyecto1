@@ -1,0 +1,200 @@
+<!-- start page title -->
+{{>message}}
+
+<div class="row">
+    <div class="col-12">
+        <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+            <h4 class="mb-sm-0 font-size-18">Asignar</h4>
+
+            <div class="page-title-right">
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item"><a href="javascript: void(0);">Parametrización</a></li>
+                    <li class="breadcrumb-item active">Formatos</li>
+                    <li class="breadcrumb-item active">Asignar</li>
+                </ol>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- end page title -->
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="mb-sm-0 font-size-18">Asignar usuarios formato</h4>
+                <br>
+                <p class="card-title-desc">Asignar los respectivos usuarios y las fechas al formato.
+                </p>
+                <form action="/parametrizacion/asignarusuarios/{{id_area1}}" method="POST" autocomplete="off">
+                    <!-- FORMATO -->
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="mb-3">
+                                <label class="form-label">Nombre preparador del área que envía:</label>
+                                <select class="form-control select2" name="id_preparador_env" id="id_preparador_env"
+                                    required>
+                                    <option value="{{preparador_env.id}}" selected>{{preparador_env.persona}}</option>
+                                    {{#each usuarios}}
+                                    <option value="{{id}}">{{persona}}</option>
+                                    {{/each}}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="mb-3">
+                                <label class="form-label">Nombre validador gerencia que recibe:</label>
+                                <select class="form-control select2" name="id_validador_rev" id="id_validador_rev"
+                                    required>
+                                    <option value="{{validador_rev.id}}" selected>{{validador_rev.persona}}</option>
+                                    {{#each usuarios}}
+                                    <option value="{{id}}">{{persona}}</option>
+                                    {{/each}}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="mb-3">
+                                <label>Fecha de vencimiento:</label>
+                                <div class="input-group" id="datepicker1">
+                                    <input type="text" name="fecha_vencimiento" id="fecha_vencimiento"
+                                        class="form-control" placeholder="yyyy-mm-dd" data-date-format="yyyy-mm-dd"
+                                        data-date-container='#datepicker1' data-provide="datepicker"
+                                        value="{{asign_usu.fecha_vencimiento}}" required>
+
+                                    <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
+                                </div><!-- input-group -->
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="mb-3">
+                                <label>Fecha casa matriz:</label>
+                                <div class="input-group" id="datepicker1">
+                                    <input type="text" name="fecha_casa_matriz" id="fecha_casa_matriz"
+                                        class="form-control" placeholder="yyyy-mm-dd" data-date-format="yyyy-mm-dd"
+                                        data-date-container='#datepicker1' data-provide="datepicker"
+                                        value="{{asign_usu.fecha_casa_matriz}}" required>
+
+                                    <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
+                                </div><!-- input-group -->
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="mb-3">
+                                <label for="basicpill-address-input">Notas aclaratorias:</label>
+                                <textarea id="basicpill-address-input" maxlength="200" class="form-control"
+                                    name="notas_aclaratorias" rows="2"
+                                    required>{{asign_usu.notas_aclaratorias}}</textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="mb-3">
+                                <input type="hidden" maxlength="200" class="form-control" name="id_formato"
+                                    value="{{id_area1}}">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="mb-3">
+                                <input type="hidden" maxlength="200" class="form-control" name="id"
+                                    value="{{asign_usu.id}}">
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="row">
+
+
+
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-1"></div>
+
+
+                        <div class="col-lg-2">
+                            <div class="mb-12">
+                                <button class="btn btn-primary btn-lg waves-effect waves-light ml-auto">
+                                    Enviar formulario</button>
+                            </div>
+                        </div>
+
+
+                        <div class="col-lg-2">
+                            <div class="mb-12">
+                                <a href="/parametrizacion/list"
+                                    class="btn btn-success btn-lg waves-effect waves-light ml-auto">
+                                    Regresar a la lista
+                                </a>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+
+
+
+
+
+
+                </form>
+            </div>
+        </div>
+        <!-- end card body -->
+    </div>
+    <!-- end card -->
+</div>
+<!-- end col -->
+
+
+<script>
+    $(document).ready(function () {
+
+        $('#fecha_vencimiento').on('change', function () {
+
+            var fecha_actual_v = new Date();
+            var g_v = $(this).val();
+            var fecha_propone_v = new Date(g_v);
+            fecha_propone_v.setDate(fecha_propone_v.getDate() + 1);
+            if (fecha_propone_v < fecha_actual_v) {
+
+                confirm("La fecha propuesta es menor que la fecha actual");
+                $(this).val("");
+            }
+        })
+
+        $('#fecha_casa_matriz').on('change', function () {
+
+            var fecha_actual = new Date();
+            var g = $(this).val();
+            var fecha_propone = new Date(g);
+            fecha_propone.setDate(fecha_propone.getDate() + 1);
+            if (fecha_propone < fecha_actual) {
+
+                confirm("La fecha propuesta es menor que la fecha actual");
+                $(this).val("");
+            }
+        })
+    });
+</script>

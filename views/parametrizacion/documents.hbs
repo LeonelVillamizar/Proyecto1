@@ -1,0 +1,177 @@
+<div class="card shadow mb-4">
+    <!-- {{>message}}-->
+
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Gestionar documentos</h6>
+
+    </div>
+
+    <!-- Nested Row within Card Body -->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="p-5">
+               
+
+                <form action="/files/{{pruebas.id}}" method="POST" enctype="multipart/form-data">
+
+                  
+                    <div class="form-group row">
+                        <div class="col-sm-4 mb-3 mb-sm-0">
+                            <label class="label label-default">Nombre</label>
+                            <input type="text" class="form-control" name="nombre" value="{{pruebas.nombre}}" disabled>
+                            <br>
+                        </div>
+                        <div class="col-sm-4 mb-3 mb-sm-0">
+                            <label class="label label-default">Responsable</label>
+                            <input type="text" class="form-control" name="responsable" value="{{pruebas.responsable}}" disabled>
+                            <br>
+
+                        </div>
+                        <div class="col-sm-4 mb-3 mb-sm-0">
+                            <label class="label label-default">Sociedad</label>
+                            <input type="text" class="form-control" name="name" value="{{pruebas.name}}" disabled>
+                            <br>
+
+                        </div>
+                        <div class="col-sm-4 mb-3 mb-sm-0">
+                            <label class="label label-default">Producto</label>
+                            <input type="text" class="form-control" name="producto" value="{{pruebas.producto}}" disabled>
+                            <br>
+
+                        </div>
+                        <div class="col-sm-4 mb-3 mb-sm-0">
+                            <label class="label label-default">Analista</label>
+                            <input type="text" class="form-control" name="usuario" value="{{pruebas.usuario}}" disabled>
+                            <br>
+
+                        </div>
+                        <div class="col-sm-4 mb-3 mb-sm-0">
+                            <label class="label label-default">Objetivos</label>
+                            <input type="text" class="form-control" name="objectivos" value="{{pruebas.objetivos}}" disabled>
+                            <br>
+
+                        </div>
+                        <div class="col-sm-4 mb-3 mb-sm-0">
+                            <label class="label label-default">Fecha_ejecucion:</label>
+                            <input type="text" class="form-control" name="ejecucion" value="{{pruebas.fecha_ejecucion}}" disabled>
+                            <br>
+
+                        </div>
+                       
+
+
+                        <div class="col-sm-4 mb-3 mb-sm-0">
+                            <input type="hidden" class="form-control" name="id_pruebas" value="{{pruebas.id}}" disabled>
+                            <br>
+
+                        </div>
+
+                    </div>
+                    <br>
+                    <hr>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h6 class="m-0 font-weight-bold text-primary">Cargar documentos</h6>
+                            <br>
+                            <div class="col-lg-4">
+                                   <textarea name="descripcion" rows="3" class="form-control" placeholder="Description"></textarea> </textarea> 
+                                 <br>
+                            </div>
+
+
+
+                            <div class="row">
+
+                                <div class="input-group">
+
+                                    <div class="custom-file">
+                                        <input type="file" id="file" name="upload" class="form-control" required>
+                                    </div>
+                                    <div class="input-group-prepend">
+                                        <input type="submit" name="btn_upload_multiple_images" value="enviar" />
+                                        <!--<button type="submit" class="btn btn-warning btn-block">Cargar </button>-->
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped table-sm table-hover table-bordered" id="sinbotones"
+                                width="100%" cellspacing="0">
+                                <col width="40">
+                                <col width="40">
+                                <col width="40">
+                                <col width="40">
+                                <thead>
+                                    <tr align="center">
+                                        <th>Descripción</th>
+                                        <th>Documento</th>
+                                        <th>Tamaño</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {{#each archivos}}
+                                    <tr>
+                                        <td align="left"><i class="{{nombre}}"> {{descripcion}}</i></td>
+                                        <td><a href={{location}}>{{nombre}}</a></td>
+                                        <td align="right">{{size}}</td>
+                                        <td align="center">
+                                                <a href="/pruebas/delete/{{id}}" type="button"
+                                                    class="btn btn-danger .btn-circle"
+                                                     onclick="return preguntarEliminar()" id="btnEliminar">
+                                                    <span title="Eliminar hallazgo" class="fas fa-trash-alt"></span>
+                                                </a>
+                                        </td>
+                                    </tr>
+                                    {{/each}}
+                                </tbody>
+                                <tfoot>
+                                    <tr align="center">
+                                        <th>Descripción</th>
+                                        <th>Documento</th>
+                                        <th>Tamaño</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                    <br>
+
+                    <div class="row">
+                        <div class="col-lg-6">
+
+                        </div>
+                        <div class="col-lg-6">
+                            <a href= "/pruebas" class="btn btn-secondary btn-block">
+                                Salir
+                            </a>
+                        </div>
+
+                        <hr>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    function preguntarEliminar() {
+        var respuesta=confirm('Realmente desea eliminar?');
+        if (respuesta==true){
+            return true;
+        }
+        else {
+            return false;
+        }
+    };
+</script>

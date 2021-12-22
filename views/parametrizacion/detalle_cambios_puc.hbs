@@ -1,0 +1,142 @@
+<!-- start page title -->
+<div class="row">
+    <div class="col-12">
+        <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+            <h4 class="mb-sm-0 font-size-18">Detalle Cambios Balance</h4>
+
+            <div class="page-title-right">
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item"><a href="javascript: void(0);">Parametrización</a></li>
+                    <li class="breadcrumb-item active">Detalle Cambios Balance</li>
+                </ol>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Detalle Cambios Balance</h4>
+
+                <br>
+                <p class="card-title-desc">El siguiente módulo permite consultar el detalle de los cambios en los datos almacenados del
+                    Balance
+                </p>
+
+                <!-- Tab panes -->
+                <div class="tab-content p-3 text-muted">
+                    <p class="mb-0">
+                        <br>
+                    <div class="form-group row">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <!--<div class="col-xs-4 col-md-4">
+                                                <label for="campo">Nro. Preliminar</label>
+                                                <input type="text" id="nro_preliminar" name="nro_preliminar"
+                                                    class="form-control" value="{{info_puc.nro_preliminar}}" disabled />
+                                            </div>-->
+
+                                            <div class="col-xs-4 col-md-4">
+                                                <label>Fecha de actualización</label>
+                                                <div class="input-group" id="datepicker1">
+                                                    <input type="text" id="fecha_actualizacion"
+                                                        name="fecha_actualizacion" class="form-control"
+                                                        value="{{info_puc.fecha_actualizacion}}" disabled />
+                                                </div>
+                                            </div>
+
+                                            <div class="col-xs-4 col-md-4">
+                                                <label for="campo">Usuario</label>
+                                                <input type="text" id="fecha_actualizacion" name="fecha_actualizacion"
+                                                    class="form-control" value="{{info_puc.usuario}}" disabled />
+                                                <br>
+                                            </div>
+
+                                            <div class="col-xs-4 col-md-4">
+                                                <label for="message">Período</label>
+                                                <input type="text" id="fecha_actualizacion" name="fecha_actualizacion"
+                                                    class="form-control" value="{{info_puc.periodo}}" disabled />
+                                            </div>
+                                            <div class="col-xs-4 col-md-4">
+                                                <label for="message">Balance</label>
+                                                <input type="text" id="fecha_actualizacion" name="fecha_actualizacion"
+                                                    class="form-control" value="{{info_puc.puc_libromayor}}" disabled />
+                                            </div>
+                                        </div>
+
+
+                                        <div class="row">
+                                        </div>
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-md-3 col-md-offset-2"></div>
+                                                <div class="col-md-3 col-md-offset-2"></div>
+                                                <div class="col-md-3 col-md-offset-2"></div>
+                                                <div class="col-md-3 col-md-offset-2">
+                                                    <a href="/parametrizacion/cargarpuc"
+                                                        class="btn btn-success btn-lg waves-effect waves-light ml-auto">
+                                                        Regresar a la lista
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="table-responsive">
+                                        <table id="datatable-buttons"
+                                            class="table table-bordered dt-responsive nowrap w-100">
+                                            <thead>
+                                                <tr align="center">
+                                                    <th>Cuenta</th>
+                                                    <th>Descripcion</th>
+                                                    <th>Valor</th>
+                                                    <th>Tipo</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {{#each detalle_cambios}}
+                                                <tr>
+                                                    <td align="center"> {{cuentas}}</td>
+                                                    <td align="left">{{descripcion}}
+                                                    </td>
+                                                    <td align="center">{{valor}}</td>
+                                                    <td align="center">{{tipo}}</td>
+                                                </tr>
+                                                {{/each}}
+                                            </tbody>
+                                            <tfoot>
+                                                <tr align="center">
+                                                    <th>Cuenta</th>
+                                                    <th>Descripcion</th>
+                                                    <th>Valor</th>
+                                                    <th>Tipo</th>
+                                                </tr>
+                                            </tfoot>
+
+                                        </table>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>

@@ -1,0 +1,83 @@
+<div class="card shadow mb-4">
+    <!-- {{>message}}-->
+
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">
+            <span class="fe-user-check fa-2x fa-lg">
+                <path
+                    d="M8 4a.5.5 0 0 1 .5.5V6a.5.5 0 0 1-1 0V4.5A.5.5 0 0 1 8 4zM3.732 5.732a.5.5 0 0 1 .707 0l.915.914a.5.5 0 1 1-.708.708l-.914-.915a.5.5 0 0 1 0-.707zM2 10a.5.5 0 0 1 .5-.5h1.586a.5.5 0 0 1 0 1H2.5A.5.5 0 0 1 2 10zm9.5 0a.5.5 0 0 1 .5-.5h1.5a.5.5 0 0 1 0 1H12a.5.5 0 0 1-.5-.5zm.754-4.246a.389.389 0 0 0-.527-.02L7.547 9.31a.91.91 0 1 0 1.302 1.258l3.434-4.297a.389.389 0 0 0-.029-.518z" />
+                <path fill-rule="evenodd"
+                    d="M0 10a8 8 0 1 1 15.547 2.661c-.442 1.253-1.845 1.602-2.932 1.25C11.309 13.488 9.475 13 8 13c-1.474 0-3.31.488-4.615.911-1.087.352-2.49.003-2.932-1.25A7.988 7.988 0 0 1 0 10zm8-7a7 7 0 0 0-6.603 9.329c.203.575.923.876 1.68.63C4.397 12.533 6.358 12 8 12s3.604.532 4.923.96c.757.245 1.477-.056 1.68-.631A7 7 0 0 0 8 3z" />
+            </span>
+            Asignar formato
+        </h6>
+    </div>
+
+    <!-- Nested Row within Card Body -->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="p-3">
+                <form class="user" action="/users/add" method="POST">
+                    <div class="col-lg-12">
+                        <div class="form-group row">
+                            <div class="form-group col-sm-6 mb-3 mb-sm-0">
+                                <label class="label label-default">Formato</label>
+                                <input id="example-email" name="example-email" class="form-control"
+                                    value={{formato.nombre}} disabled>
+                                <br>
+                            </div>
+                            <div class="form-group col-sm-6 mb-3 mb-sm-0">
+                                <label class="label label-default">Usuario</label>
+                                <select class="form-control" name="tipou_id">
+                                    <option value="">- Elegir Opción</option>
+                                    {{#each users}}
+                                    <option value="{{id}}">{{nombre}}</option>
+                                    {{/each}}
+                                </select>
+                                <br>
+                            </div>
+                            <div class="form-group col-sm-6 mb-3 mb-sm-0">
+                                <label class="label label-default">Fecha límite</label>
+                                <input class="form-control" type="date" name="date" id="example-date">
+                                <br>
+                            </div>
+                            <div class="form-group col-sm-6 mb-3 mb-sm-0">
+                                <label class="label label-default">Aclaraciones</label>
+                                <input type="text" class="form-control" id="example-helping">
+                                <br>
+                            </div>
+                            <div class="form-group col-sm-6 mb-3 mb-sm-0">
+                                <label class="label label-default">Áreas</label>
+                                <select class="form-control" name="tipou_id">
+                                    <option value="">- Elegir Opción</option>
+                                    {{#each areas}}
+                                    <option value="{{id}}">{{nombre}}</option>
+                                    {{/each}}
+                                </select>
+                                <br>
+                            </div>
+                            <div class="form-group col-sm-6 mb-3 mb-sm-0">
+                                <label class="label label-default">Responsable</label>
+                                <select class="form-control" name="tipou_id">
+                                    <option value="">- Elegir Opción</option>
+                                    {{#each users}}
+                                    <option value="{{id}}">{{nombre}}</option>
+                                    {{/each}}
+                                </select>
+                                <br>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <button type="button" class="btn btn-block btn-sm btn-success waves-effect waves-light">
+                                    Asignar formato
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

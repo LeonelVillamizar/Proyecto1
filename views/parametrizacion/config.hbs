@@ -1,0 +1,147 @@
+<div class="card shadow mb-4">
+    <!-- {{>message}}-->
+
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">
+            <span class="fe-settings fa-2x fa-lg">
+                <path
+                    d="M8 4a.5.5 0 0 1 .5.5V6a.5.5 0 0 1-1 0V4.5A.5.5 0 0 1 8 4zM3.732 5.732a.5.5 0 0 1 .707 0l.915.914a.5.5 0 1 1-.708.708l-.914-.915a.5.5 0 0 1 0-.707zM2 10a.5.5 0 0 1 .5-.5h1.586a.5.5 0 0 1 0 1H2.5A.5.5 0 0 1 2 10zm9.5 0a.5.5 0 0 1 .5-.5h1.5a.5.5 0 0 1 0 1H12a.5.5 0 0 1-.5-.5zm.754-4.246a.389.389 0 0 0-.527-.02L7.547 9.31a.91.91 0 1 0 1.302 1.258l3.434-4.297a.389.389 0 0 0-.029-.518z" />
+                <path fill-rule="evenodd"
+                    d="M0 10a8 8 0 1 1 15.547 2.661c-.442 1.253-1.845 1.602-2.932 1.25C11.309 13.488 9.475 13 8 13c-1.474 0-3.31.488-4.615.911-1.087.352-2.49.003-2.932-1.25A7.988 7.988 0 0 1 0 10zm8-7a7 7 0 0 0-6.603 9.329c.203.575.923.876 1.68.63C4.397 12.533 6.358 12 8 12s3.604.532 4.923.96c.757.245 1.477-.056 1.68-.631A7 7 0 0 0 8 3z" />
+            </span>
+            Configuración de validaciones de formatos
+        </h6>
+    </div>
+
+    <!-- Nested Row within Card Body -->
+
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="header-title">Adicionar campos</h4>
+                    <p class="sub-header">
+                        Configurar campos del formato a crear.
+                    </p>
+
+                    <div class="mb-2">
+                        <div class="row">
+                            <div class="col-12 text-sm-center form-inline">
+                                <div class="form-group mr-2">
+                                    <button id="demo-btn-addrow" class="btn btn-primary"><i
+                                            class="mdi mdi-plus-circle mr-2"></i>
+                                        Adicionar nuevo campo</button>
+                                </div>
+                                <div class="form-group">
+                                    <input id="demo-input-search2" type="text" placeholder="Search" class="form-control"
+                                        autocomplete="off">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <table id="demo-foo-addrow"
+                        class="table table-centered table-striped table-bordered mb-0 toggle-circle" data-page-size="7">
+                        <thead>
+                            <tr>
+                                <th data-sort-ignore="true" class="min-width">
+                                </th>
+                                <th data-sort-initial="true" data-toggle="true">Campo</th>
+                                <th>Tipo de campo</th>
+                                <th>Tipo de validación</th>
+                                <th data-hide="phone, tablet">Estado</th>
+                                <th data-hide="phone, tablet">Confimar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="text-center"><button
+                                        class="demo-delete-row btn btn-danger btn-xs btn-icon"><i
+                                            class="fa fa-times"></i></button>
+                                </td>
+                                <td><input id="example-email" name="example-email" class="form-control"></td>
+                                <td> <select class="form-control" name="area" id="area">
+                                        <option>Texto</option>
+                                        <option>Entero</option>
+                                        <option>Moneda</option>
+                                        <option>Fecha</option>
+                                    </select></td>
+                                <td><select class="form-control" name="area" id="area">
+                                        <option>Validación Texto</option>
+                                        <option>Validación Número</option>
+                                        <option>Validación Espacios</option>
+                                        <option>Validación Fecha</option>
+                                    </select></td>
+                                <td><span class="badge label-table badge-success">Activo</span>
+                                </td>
+                                <td class="text-center"><button
+                                        class="demo-delete-row btn btn-success btn-xs btn-icon"><i
+                                            class="fe-check-circle"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-center"><button
+                                        class="demo-delete-row btn btn-danger btn-xs btn-icon"><i
+                                            class="fa fa-times"></i></button>
+                                </td>
+                                <td>Comercial-Corporativo-Cartera Total Local</td>
+                                <td>Moneda</td>
+                                <td>Validación número</td>
+                                <td><span class="badge label-table badge-success">Activo</span>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td class="text-center"><button
+                                        class="demo-delete-row btn btn-danger btn-xs btn-icon"><i
+                                            class="fa fa-times"></i></button>
+                                </td>
+                                <td>Comercial-Pymes-Cartera Total Local</td>
+                                <td>Moneda</td>
+                                <td>Validación número</td>
+                                <td><span class="badge label-table badge-success">Activo</span>
+                                </td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr class="active">
+                                <td colspan="6">
+                                    <div class="text-right">
+                                        <ul
+                                            class="pagination pagination-split justify-content-end footable-pagination m-t-10">
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                    <br>
+                    <!-- END wrapper -->
+                    <div class="col-lg-6">
+                        <button type="button" class="btn btn-block btn-sm btn-success waves-effect waves-light">
+                            Actualizar configuración
+                        </button>
+                    </div>
+                </div>
+            </div> <!-- end card -->
+        </div> <!-- end col -->
+    </div>
+    <!-- end row -->
+</div> <!-- container -->
+
+
+
+
+<!-- Vendor js -->
+<script src="../assets/js/vendor.min.js"></script>
+
+<!-- Footable js -->
+<script src="../assets/libs/footable/footable.all.min.js"></script>
+
+<!-- Init js -->
+<script src="../assets/js/pages/foo-tables.init.js"></script>
+
+<!-- App js -->
+<script src="../assets/js/app.min.js"></script>

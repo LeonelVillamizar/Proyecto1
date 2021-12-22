@@ -1,0 +1,376 @@
+<!-- start page title -->
+<div class="row">
+    <div class="col-12">
+        <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+            <h4 class="mb-sm-0 font-size-18">Detalle Formulario</h4>
+
+            <div class="page-title-right">
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item"><a href="javascript: void(0);">Formatos</a></li>
+                    <li class="breadcrumb-item active">Detalle</li>
+                </ol>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="row">
+
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+
+                <h4 class="card-title">Detalle formulario</h4>
+
+                <br>
+                <p class="card-title-desc">La siguiente información corresponde al detalle del formato y validaciones
+                    obligatorias.
+                </p>
+
+                <!-- Nav tabs -->
+                <ul class="nav nav-pills nav-justified" role="tablist">
+                    <li class="nav-item waves-effect waves-light">
+                        <a class="nav-link active" data-bs-toggle="tab" href="#home-1" role="tab">
+                            <span class="d-block d-sm-none"><i class="fas fa-home"></i></span>
+                            <span class="d-none d-sm-block">Formatos</span>
+                        </a>
+                    </li>
+                    {{!-- <li class="nav-item waves-effect waves-light">
+                        <a class="nav-link" data-bs-toggle="tab" href="#campos" role="tab">
+                            <span class="d-block d-sm-none"><i class="far fa-user"></i></span>
+                            <span class="d-none d-sm-block">Campos</span>
+                        </a>
+                    </li>
+                    <li class="nav-item waves-effect waves-light">
+                        <a class="nav-link" data-bs-toggle="tab" href="#validaciones_obligatorias" role="tab">
+                            <span class="d-block d-sm-none"><i class="far fa-user"></i></span>
+                            <span class="d-none d-sm-block">Validaciones obligatorias</span>
+                        </a>
+                    </li>
+                    <li class="nav-item waves-effect waves-light">
+                        <a class="nav-link" data-bs-toggle="tab" href="#validaciones_cruce" role="tab">
+                            <span class="d-block d-sm-none"><i class="far fa-user"></i></span>
+                            <span class="d-none d-sm-block">Validaciones cruce contable</span>
+                        </a>
+                    </li>
+                    <li class="nav-item waves-effect waves-light">
+                        <a class="nav-link" data-bs-toggle="tab" href="#validaciones_cruce_formatos" role="tab">
+                            <span class="d-block d-sm-none"><i class="far fa-user"></i></span>
+                            <span class="d-none d-sm-block">Validaciones cruce entre formatos</span>
+                        </a>
+                    </li> --}}
+                </ul>
+
+                <!-- Tab panes -->
+                <div class="tab-content p-3 text-muted">
+                    <!-- Información general -->
+                    <div class="tab-pane active" id="home-1" role="tabpanel">
+                        <br>
+                        <br>
+                        <div class="form-group row">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="mb-3">
+                                        <label for="basicpill-firstname-input">Nombre:</label>
+                                        <input type="text" class="form-control" name="nombre" value="{{formato.nombre}}"
+                                            disabled>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div class="mb-3">
+                                        <label for="basicpill-firstname-input">Periodicidad:</label>
+                                        <input type="text" class="form-control" name="periodicidad"
+                                            value="{{formato.periodicidad}}" disabled>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="mb-3">
+                                        <label for="basicpill-firstname-input">Posee cruce con balance:</label>
+                                        <input type="text" class="form-control" name="cruce_balance"
+                                            value="{{formato.cruce_balance}}" disabled>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div class="mb-3">
+                                        <label for="basicpill-firstname-input">Posee cruce con formato:</label>
+                                        <input type="text" class="form-control" name="cruce_formato"
+                                            value="{{formato.cruce_formato}}" disabled>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="mb-3">
+                                        <label for="basicpill-firstname-input">Estado del formato:</label>
+                                        <input type="text" class="form-control" name="estado" value="{{formato.estado}}"
+                                            disabled>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div class="mb-3">
+                                        <label for="basicpill-firstname-input">Área:</label>
+                                        <input type="text" class="form-control" name="Area" value="{{areas.nombre}}"
+                                            disabled>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="mb-3">
+                                        <label for="basicpill-firstname-input">Vicepresidencia:</label>
+                                        <input type="text" class="form-control" name="Viseprecidencia"
+                                            value="{{vises.vicepresidencia}}" disabled>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div class="mb-3">
+                                        <label for="basicpill-email-input">Identificador</label>
+                                        <input type="text" maxlength="15" class="form-control" id="identificador"
+                                            name="identificador" value="{{formato.identificador}}" disabled>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="mb-3">
+                                    <label for="basicpill-address-input">Descripción:</label>
+                                    <textarea id="basicpill-address-input" class="form-control" name="descripcion"
+                                        rows="2" disabled>{{formato.descripcion}}  </textarea>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="mb-3">
+                                    <label for="basicpill-email-input">Rango de datos (Ejm: C9:Z). No incluir encabezados</label>
+                                    <input type="text" class="form-control" id="rango" name="rango"
+                                        value="{{formato.rango}}" disabled />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Campos -->
+                    <div class="tab-pane" id="campos" role="tabpanel">
+                        <p class="mb-0">
+                            <br>
+                        <div class="form-group row">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            {{#each campos}}
+                                            <div data-repeater-list="group" id="group" name="group">
+                                                <div data-repeater-item class="row">
+                                                    <div class="col-xs-4 col-md-3">
+                                                        <label for="campo">Nombre del campo</label>
+                                                        <input type="text" id="campo" name="campo" class="form-control"
+                                                            value="{{nombre}}" disabled />
+                                                    </div>
+
+                                                    <div class="col-xs-4 col-md-3">
+                                                        <label for="campo">Descripción</label>
+                                                        <input type="text" id="campo" name="tipo_campo"
+                                                            class="form-control" value="{{descripcion}}" disabled />
+                                                    </div>
+
+                                                    <div class="col-xs-4 col-md-3">
+                                                        <label for="campo">Longitud</label>
+                                                        <input type="text" id="campo" name="tipo_validacion"
+                                                            class="form-control" value="{{longitud}}" disabled />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {{/each}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        </p>
+                    </div>
+
+                    <!-- Validaciones obligatorias -->
+                    <div class="tab-pane" id="validaciones_obligatorias" role="tabpanel">
+                        <p class="mb-0">
+                            <br>
+                        <div class="form-group row">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            {{#each validaciones}}
+                                            <div data-repeater-list="group" id="group" name="group">
+                                                <div data-repeater-item class="row">
+                                                    <input type="hidden" id="id_val" name="id" class="form-control"
+                                                        value={{id}} disabled />
+
+                                                    <div class="col-xs-4 col-md-3">
+                                                        <label for="campo">Nombre del campo</label>
+                                                        <input type="text" id="campo" name="campo" class="form-control"
+                                                            value="{{campo}}" disabled />
+                                                    </div>
+
+                                                    <div class="col-xs-4 col-md-3">
+                                                        <label for="campo">Tipo de campo</label>
+                                                        <input type="text" id="campo" name="tipo_campo"
+                                                            class="form-control" value={{tipo_campo}} disabled />
+                                                    </div>
+
+                                                    <div class="col-xs-4 col-md-3">
+                                                        <label for="campo">Tipo de validación</label>
+                                                        <input type="text" id="campo" name="tipo_validacion"
+                                                            class="form-control" value={{tipo_validacion}} disabled />
+                                                    </div>
+
+                                                    <div class="col-xs-4 col-md-3">
+                                                        <label for="message">Descripción</label>
+                                                        <textarea id="descripcion" name="descripcion_campo"
+                                                            class="form-control" disabled>{{descripcion}}</textarea>
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+                                            {{/each}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        </p>
+                    </div>
+
+                    <!-- Validaciones cruce contable -->
+                    <div class="tab-pane" id="validaciones_cruce" role="tabpanel">
+                        <p class="mb-0">
+                            <br>
+                        <div class="form-group row">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="card">
+                                        <div class="card-body">
+
+
+                                            {{#each validaciones_cruce}}
+                                            <div data-repeater-list="group" id="group" name="group">
+                                                <div data-repeater-item class="row">
+                                                    <div class="col-xs-4 col-md-3">
+                                                        <label for="campo">PUC/Libro</label>
+                                                        <input type="text" id="campo" name="campo" class="form-control"
+                                                            value="{{puc_libro}}" disabled />
+                                                    </div>
+
+                                                    <div class="col-xs-4 col-md-3">
+                                                        <label for="campo">Número de cuenta</label>
+                                                        <input type="text" id="campo" name="tipo_campo"
+                                                            class="form-control" value="{{nro_cuenta}}" disabled />
+                                                    </div>
+
+                                                    <div class="col-xs-4 col-md-3">
+                                                        <label for="campo">Campo</label>
+                                                        <input type="text" id="campo" name="tipo_validacion"
+                                                            class="form-control" value="{{nombre}}" disabled />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {{/each}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        </p>
+                    </div>
+
+                    <!-- Validaciones cruce entre formatos -->
+                    <div class="tab-pane" id="validaciones_cruce_formatos" role="tabpanel">
+                        <p class="mb-0">
+                            <br>
+                        <div class="form-group row">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="card">
+                                        <div class="card-body">
+
+
+                                            {{#each validaciones_cruce_formatos}}
+                                            <div data-repeater-list="group" id="group" name="group">
+                                                <div data-repeater-item class="row">
+                                                    <div class="col-xs-4 col-md-3">
+                                                        <label for="campo">Formato de cruce</label>
+                                                        <input type="text" id="campo" name="campo" class="form-control"
+                                                            value="{{formato_cruce}}" disabled />
+                                                    </div>
+
+                                                    <div class="col-xs-4 col-md-3">
+                                                        <label for="campo">Campo cruce</label>
+                                                        <input type="text" id="campo" name="tipo_campo"
+                                                            class="form-control" value="{{campo_cruce}}" disabled />
+                                                    </div>
+
+                                                    <div class="col-xs-4 col-md-3">
+                                                        <label for="campo">Umbral</label>
+                                                        <input type="text" id="campo" name="tipo_validacion"
+                                                            class="form-control" value="{{umbral}}" disabled />
+                                                    </div>
+
+                                                    <div class="col-xs-4 col-md-3">
+                                                        <label for="campo">Ciclo</label>
+                                                        <input type="text" id="campo" name="tipo_validacion"
+                                                            class="form-control" value="{{ciclo}}" disabled />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {{/each}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        </p>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3 col-md-offset-2"></div>
+                    <div class="col-md-3 col-md-offset-2"></div>
+                    <div class="col-md-3 col-md-offset-2"></div>
+                    <div class="col-md-3 col-md-offset-2">
+                        <a href="/parametrizacion/list" class="btn btn-success btn-lg waves-effect waves-light ml-auto">
+                            Regresar a la lista
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>

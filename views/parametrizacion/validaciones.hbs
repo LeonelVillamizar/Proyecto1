@@ -1,0 +1,692 @@
+<!-- start page title -->
+
+<div class="row">
+    {{>message}}
+    <div class="col-12">
+        <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+            <h4 class="mb-sm-0 font-size-18">Campos</h4>
+
+            <div class="page-title-right">
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item"><a href="javascript: void(0);">Parametrización</a></li>
+                    <li class="breadcrumb-item active">Formatos</li>
+                    <li class="breadcrumb-item active">Campos</li>
+                </ol>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- end page title -->
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+
+
+                <ul class="nav nav-pills nav-justified" role="tablist">
+                    <li class="nav-item waves-effect waves-light">
+                        <a class="nav-link active" data-bs-toggle="tab" href="#home-1" role="tab">
+                            <span class="d-block d-sm-none"><i class="fas fa-home"></i></span>
+                            <span class="d-none d-sm-block">Informacion del campo</span>
+                        </a>
+                    </li>
+                    <li class="nav-item waves-effect waves-light" id="cruce_contable">
+                        <a class="nav-link" data-bs-toggle="tab" href="#profile-2" role="tab">
+                            <span class="d-block d-sm-none"><i class="far fa-user"></i></span>
+                            <span class="d-none d-sm-block">Validaciones de cruce contable</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item waves-effect waves-light" id="cruce_formatos">
+                        <a class="nav-link" data-bs-toggle="tab" href="#profile-3" role="tab">
+                            <span class="d-block d-sm-none"><i class="far fa-user"></i></span>
+                            <span class="d-none d-sm-block">Validaciones de cruce entre formatos</span>
+                        </a>
+                    </li>
+                </ul>
+
+
+                <div class="tab-content p-3 text-muted">
+                    <!-- INFORMACIÓN DEL CAMPO -->
+                    <div class="tab-pane active" id="home-1" role="tabpanel">
+                        <div class="form-group row">
+                            <hr color="blue" size=3>
+                            <br>
+                            <h4 class="mb-sm-0 font-size-18">Campo</h4>
+                            <br>
+                            <p class="card-title-desc">Información general asociada al campo.
+                            </p>
+
+                            <form class="user" id="Form1" name="Form1" action="/parametrizacion/validaciones/{{id}}"
+                                method="POST" autocomplete="off">
+
+                                <div class="tab-content p-3 text-muted">
+                                    <div class="tab-pane active" id="home-1" role="tabpanel">
+                                        <div class="form-group row">
+                                            <!-- FORMATO -->
+                                            <div class="col-lg-4">
+                                                <div class="mb-3">
+                                                    <label for="basicpill-firstname-input">Nombre</label>
+                                                    <input type="text" maxlength="200" class="form-control"
+                                                        name="nombre" value="{{info_campo.nombre}}">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label for="basicpill-address-input">Descripción</label>
+                                                    <textarea id="basicpill-address-input" maxlength="5000"
+                                                        class="form-control" name="descripcion"
+                                                        rows="2">{{info_campo.descripcion}}</textarea>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-2">
+                                                <div class="mb-3">
+                                                    <label for="basicpill-firstname-input">Longitud</label>
+                                                    <input type="number" min="50" max="5000" class="form-control"
+                                                        name="longitud" id="longitud" value="{{info_campo.longitud}}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- VALIDACIONES DE CRUCE CONTABLE -->
+
+                    <div class="tab-pane" id="profile-2" role="tabpanel">
+
+                        <div class="form-group row">
+                            <hr color="blue" size=3>
+                            <br>
+                            <h4 class="mb-sm-0 font-size-18">Parametrizaciones de validaciones de cruce contable
+                            </h4>
+                            <br>
+                            <p class="card-title-desc">Adicionar las validaciones correspondientes por cada
+                                campo
+                                del formato.
+                            </p>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <form class="repeater" id="form_val_cruce" name="form_val_cruce"
+                                                autocomplete="off" action="/parametrizacion/validaciones/{{id}}"
+                                                method="POST">
+                                                <div data-repeater-list="group2" id="group2" name="group2">
+                                                    <div data-repeater-item class="row">
+                                                        <div class="mb-3 col-lg-2">
+                                                            <label for="email">Archivo de validación</label>
+                                                            <select id="formato_cruce" name="formato_cruce"
+                                                                class="form-select" onchange="carg(this);" required>
+                                                                <option selected>Seleccione...</option>
+                                                                {{#each tipo_libro}}
+                                                                <option value="{{id}}">{{nombre}}</option>
+                                                                {{/each}}
+                                                            </select>
+                                                        </div>
+
+                                                        <div class="mb-3 col-lg-2">
+                                                            <label for="message">Número de cuenta</label>
+                                                            <input type="text" maxlength="200" id="nro_cuenta"
+                                                                name="nro_cuenta" class="form-control">
+                                                        </div>
+
+                                                        <div class="mb-3 col-lg-2">
+                                                            <label for="message">Nodo</label>
+                                                            <select id="nodo" name="nodo" class="form-select" required>
+                                                                <option selected>Seleccione...</option>
+                                                                {{#each nodos}}
+                                                                <option value="{{id_nodo}}">{{nombre}}</option>
+                                                                {{/each}}
+                                                            </select>
+                                                        </div>
+
+                                                        <div class="mb-3 col-lg-2">
+                                                            <label for="message">Campo concepto</label>
+                                                            <select id="id_campo_concepto" name="id_campo_concepto"
+                                                                class="form-select" required>
+                                                                <option selected>Seleccione...</option>
+                                                                {{#each info_campo_list}}
+                                                                <option value="{{id}}">{{nombre}}</option>
+                                                                {{/each}}
+                                                            </select>
+                                                        </div>
+
+                                                        <div class="mb-3 col-lg-2">
+                                                            <label for="message">Concepto</label>
+                                                            <input type="text" maxlength="200" id="concepto"
+                                                                name="concepto" class="form-control">
+                                                        </div>
+
+                                                        <div class="col-lg-2 align-self-end">
+                                                            <label for="message"></label>
+                                                            <button data-repeater-delete type="button"
+                                                                class="btn btn-danger waves-effect waves-light btn-lg">
+                                                                <i class="bx bx-trash label-icon"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <input data-repeater-create type="button"
+                                                    class="btn btn-success mt-3 mt-lg-0" value="Adicionar campo" />
+                                            </form>
+                                            <br>
+                                            <hr>
+                                            <form class="repeater" id="form_edit_cruce" name="form_val_cruce"
+                                                action="/parametrizacion/validaciones/{{id}}" method="POST">
+                                                {{#each new_cruce_contable}}
+                                                <div data-repeater-list="group2" id="group2" name="group2">
+                                                    <div data-repeater-item class="row">
+                                                        <input type="hidden" id="id_cruce_list" maxlength="200"
+                                                            name="id_cruce_list" class="form-control" value="{{id}}">
+
+                                                        <div class="mb-3 col-lg-2">
+                                                            <label for="email">Archivo de validación</label>
+                                                            <select id="formato_cruce_list{{id}}"
+                                                                name="formato_cruce_list" class="form-select"
+                                                                onchange="carg_list(this);" required>
+                                                                <option value="{{id_tipo_libro}}">{{nombre_libro}}
+                                                                </option>
+                                                                {{#each tipo_libro}}
+                                                                <option value="{{id}}">{{nombre}}</option>
+                                                                {{/each}}
+                                                            </select>
+                                                        </div>
+
+                                                        <div class="mb-3 col-lg-2">
+                                                            <label for="message">Número de cuenta</label>
+                                                            <input type="text" maxlength="200"
+                                                                id="nro_cuenta_list{{id}}" name="nro_cuenta_list"
+                                                                value={{nro_cuenta}} class="form-control"
+                                                                {{disabled_cta}}>
+                                                        </div>
+
+                                                        <div class="mb-3 col-lg-2">
+                                                            <label for="message">Nodo</label>
+                                                            <select id="nodo_list{{id}}" name="nodo_list"
+                                                                class="form-select" required {{disabled_nodo}}>
+                                                                <option value="{{id_layout}}">{{nombre_layout}}</option>
+                                                                {{#each layout}}
+                                                                <option value="{{id}}">{{nombre}}</option>
+                                                                {{/each}}
+                                                            </select>
+                                                        </div>
+
+                                                        <div class="mb-3 col-lg-2">
+                                                            <label for="message">Campo concepto</label>
+                                                            <select id="id_campo_concepto_list"
+                                                                name="id_campo_concepto_list" class="form-select"
+                                                                required>
+                                                                <option value="{{id_campo_concepto}}">{{campo_concepto}}
+                                                                </option>
+                                                                {{#each info_campo_list}}
+                                                                <option value="{id}}">{{nombre}}</option>
+                                                                {{/each}}
+                                                            </select>
+                                                        </div>
+
+                                                        <div class="mb-3 col-lg-2">
+                                                            <label for="message">Concepto</label>
+                                                            <input type="text" maxlength="200" id="concepto_list"
+                                                                name="concepto_list" value="{{concepto}}"
+                                                                class="form-control">
+                                                        </div>
+
+                                                        <div class="mb-3 col-lg-2 align-self-end">
+                                                            <label for="message"></label>
+                                                            <a data-repeater-delete type="button" onclick="return preguntarEliminar()"
+                                                                href="/parametrizacion/delete_cruce/{{id}}"
+                                                                class="btn btn-danger d-inline-block waves-effect waves-light btn-lg">
+                                                                <i class="bx bx-trash label-icon"></i>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                {{/each}}
+
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- VALIDACIONES DE CRUCE ENTRE FORMATOS -->
+
+                    <div class="tab-pane" id="profile-3" role="tabpanel">
+
+                        <div class="form-group row">
+                            <hr color="blue" size=3>
+                            <br>
+                            <h4 class="mb-sm-0 font-size-18">Parametrizaciones de validaciones de cruce entre
+                                formatos
+                            </h4>
+                            <br>
+                            <p class="card-title-desc">Adicionar las validaciones correspondientes por cada
+                                campo
+                                del formato.
+                            </p>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <form class="repeater" id="form_val_formatos" name="form_val_formatos"
+                                                action="/parametrizacion/validaciones/{{id}}" method="POST"
+                                                autocomplete="off">
+                                                <div data-repeater-list="group3" id="group3" name="group3">
+                                                    <div data-repeater-item class="row">
+                                                        <div class="mb-3 col-lg-2">
+                                                            <label for="message">Nombre del campo del concepto</label>
+                                                            <select id="id_campo_concepto" name="id_campo_concepto"
+                                                                class="form-select" required>
+                                                                <option selected>Seleccione...</option>
+                                                                {{#each info_campo_list}}
+                                                                <option value="{{id}}">{{nombre}}</option>
+                                                                {{/each}}
+                                                            </select>
+                                                        </div>
+
+                                                        <div class="mb-3 col-lg-2">
+                                                            <label for="message">Concepto</label>
+                                                            <input type="text" maxlength="200" id="concepto"
+                                                                name="concepto" class="form-control">
+                                                        </div>
+
+                                                        <div class="mb-3 col-lg-2">
+                                                            <label for="email">Ciclo del reporte</label>
+                                                            <select id="ciclo" name="ciclo" class="form-select"
+                                                                required>
+                                                                <option selected>Seleccione...</option>
+                                                                <option>Actual</option>
+                                                                <option>Mensual</option>
+                                                                <option>Trimestral</option>
+                                                                <option>Anual</option>
+                                                            </select>
+                                                        </div>
+
+                                                        <div class="mb-3 col-lg-2">
+                                                            <label for="message">Formato de cruce</label>
+                                                            <select id="formato_cruce" name="formato_cruce"
+                                                                onchange="consultar_campos(this);" class="form-select"
+                                                                required>
+                                                                <option selected>Seleccione...</option>
+                                                                {{#each lista_formatos}}
+                                                                <option value="{{id}}">{{nombre}}</option>
+                                                                {{/each}}
+                                                            </select>
+                                                        </div>
+
+                                                        <div class="mb-3 col-lg-2">
+                                                            <label for="message">Campo cruce concepto</label>
+                                                            <select id="campo_cruce_concepto"
+                                                                name="campo_cruce_concepto" class="form-select"
+                                                                required>
+                                                                <option value="{{id_campo}}" selected>{{nombre}}
+                                                                </option>
+                                                            </select>
+                                                        </div>
+
+                                                        <div class="mb-3 col-lg-2">
+                                                            <label for="message">Concepto cruce</label>
+                                                            <input type="text" maxlength="200" id="concepto_cruce"
+                                                                name="concepto_cruce" class="form-control">
+                                                        </div>
+
+                                                        <div class="mb-3 col-lg-2">
+                                                            <label for="message">Campo cruce valor</label>
+                                                            <select id="campo_cruce_valor" name="campo_cruce_valor"
+                                                                class="form-select" required>
+                                                                <option value="{{id_campo}}" selected>{{nombre}}
+                                                                </option>
+                                                            </select>
+                                                        </div>
+
+                                                        <div class="mb-3 col-lg-2">
+                                                            <label for="message"></label>
+                                                            <button data-repeater-delete type="button"
+                                                                class="btn btn-danger waves-effect waves-light btn-lg">
+                                                                <i class="bx bx-trash label-icon"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                                <input data-repeater-create type="button"
+                                                    class="btn btn-success mt-3 mt-lg-0" value="Adicionar campo" />
+
+                                            </form>
+                                            <br>
+                                            <hr>
+
+                                            <form class="repeater" id="form_edit_formatos" name="form_edit_formatos"
+                                                action="/parametrizacion/validaciones/{{id}}" method="POST">
+
+                                                {{#each new_cruce_formatos}}
+                                                <div data-repeater-list="group3" id="group3" name="group3">
+                                                    <div data-repeater-item class="row">
+                                                        <input type="hidden" id="id_cruce" maxlength="200" name="id"
+                                                            class="form-control" value="{{id}}">
+
+                                                        <div class="mb-3 col-lg-2">
+                                                            <label for="message">Nombre del campo del concepto</label>
+                                                            <select id="id_campo_concepto{{id}}"
+                                                                name="id_campo_concepto" class="form-select" required>
+                                                                <option value="{{id_campo_concepto}}">{{campo_concepto}}
+                                                                </option>
+                                                                {{#each info_campo_list}}
+                                                                <option value="{{id}}">{{nombre}}</option>
+                                                                {{/each}}
+                                                            </select>
+                                                        </div>
+
+                                                        <div class="mb-3 col-lg-2">
+                                                            <label for="message">Concepto</label>
+                                                            <input type="text" maxlength="200" id="concepto"
+                                                                name="concepto" value="{{concepto}}"
+                                                                class="form-control">
+                                                        </div>
+
+                                                        <div class="mb-3 col-lg-2">
+                                                            <label for="email">Ciclo del reporte</label>
+                                                            <select id="ciclo" name="ciclo" class="form-select"
+                                                                required>
+                                                                <option selected>{{ciclo}}</option>
+                                                                <option>Actual</option>
+                                                                <option>Mensual</option>
+                                                                <option>Trimestral</option>
+                                                                <option>Anual</option>
+                                                            </select>
+                                                        </div>
+
+                                                        <div class="mb-3 col-lg-2">
+                                                            <label for="message">Formato de cruce</label>
+                                                            <select id="formato_cruce_list{{id}}" name="formato_cruce_list"
+                                                                onchange="consultar_campos_list(this);"
+                                                                class="form-select" required>
+                                                                <option value="{{id_formato_cruce}}" selected>
+                                                                    {{formato_cruce}}</option>
+                                                                {{#each lista_formatos}}
+                                                                <option value="{{id}}">{{nombre}}</option>
+                                                                {{/each}}
+                                                            </select>
+                                                        </div>
+
+                                                        <div class="mb-3 col-lg-2">
+                                                            <label for="message">Campo cruce concepto</label>
+                                                            <select id="campo_cruce_concepto_list"
+                                                                name="campo_cruce_concepto_list" class="form-select"
+                                                                required>
+                                                                <option value="{{id_campo_concepto_cruce}}" selected>
+                                                                    {{campo_concepto_cruce}}
+                                                                </option>
+                                                            </select>
+                                                        </div>
+
+                                                        <div class="mb-3 col-lg-2">
+                                                            <label for="message">Concepto cruce</label>
+                                                            <input type="text" maxlength="200" id="concepto_cruce"
+                                                                name="concepto_cruce" value="{{concepto_cruce}}"
+                                                                class="form-control">
+                                                        </div>
+
+                                                        <div class="mb-3 col-lg-2">
+                                                            <label for="message">Campo cruce valor</label>
+                                                            <select id="campo_cruce_valor_list"
+                                                                name="campo_cruce_valor_list" class="form-select" required>
+                                                                <option value="{{id_campo_valor_cruce}}" selected>
+                                                                    {{campo_valor_cruce}}
+                                                                </option>
+                                                            </select>
+                                                        </div>
+
+                                                        <div class="mb-3 col-lg-2 align-self-end">
+                                                            <label for="message"></label>
+                                                            <a data-repeater-delete type="button" onclick="return preguntarEliminar()"
+                                                                href="/parametrizacion/delete_cruce_formato/{{id}}"
+                                                                class="btn btn-danger waves-effect waves-light btn-lg">
+                                                                <i class="bx bx-trash label-icon"></i>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {{/each}}
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3 col-md-offset-2"></div>
+                        <div class="col-md-3 col-md-offset-2"></div>
+                        <div class="col-md-3 col-md-offset-2">
+                            <button id="btnEnviar" name="btnEnviar" onclick="submitForms({{id}})"
+                                class="btn btn-primary btn-lg waves-effect waves-light ml-auto">Enviar
+                                formulario</button>
+                        </div>
+
+                        <div class="col-md-3 col-md-offset-2">
+                            <a href="/parametrizacion/campos/{{info_campo.id_formato}}"
+                                class="btn btn-success btn-lg waves-effect waves-light ml-auto">
+                                Regresar a la lista
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- end card body -->
+    </div>
+    <!-- end col -->
+</div>
+
+
+<script>
+    function consultar_campos(elemento) {
+        $.ajax({
+            url: '/parametrizacion/pregunta/consultar/campos',
+            method: 'POST',
+            data: {
+                'array': JSON.stringify(elemento.value)
+            },
+            success: function (consulta_campo) {
+                let grupo = elemento.name.substr(7, 1);
+                console.log(grupo);
+                try {
+                    // con esta linea manejo el error, en el momento en que cambio el nombre formato por otro
+                    // sino lo usuara al momento de cambiarlo genera error porque inicialmente el repeditor les pone a todos el mismo
+                    // id que se llama 'campo', esto debemos cambiarlo para que nos funcione bien todo
+                    document.getElementById('campo_cruce_valor').id = "campo_cruce_valor" + grupo;
+                    document.getElementById('campo_cruce_concepto').id = "campo_cruce_concepto" + grupo;
+                } catch (err) {
+                }
+                console.log(document.getElementById('campo_cruce_valor' + grupo));
+                $("#campo_cruce_valor" + grupo).find('option').remove();
+                $("#campo_cruce_valor" + grupo).append(`<option value="">Seleccione...</option>`)
+                consulta_campo.consulta_campo.forEach(consulta_campo => {
+                    $("#campo_cruce_valor" + grupo).append(`<option value="${consulta_campo.id_campo}">${consulta_campo.nombre}</option>`)
+                })
+
+                $("#campo_cruce_concepto" + grupo).find('option').remove();
+                $("#campo_cruce_concepto" + grupo).append(`<option value="">Seleccione...</option>`)
+                consulta_campo.consulta_campo.forEach(consulta_campo => {
+                    $("#campo_cruce_concepto" + grupo).append(`<option value="${consulta_campo.id_campo}">${consulta_campo.nombre}</option>`)
+                })
+            }
+        })
+    }
+
+    function consultar_campos_list(elemento) {
+        var id = elemento.id;
+        var grupo = elemento.id.substr(elemento.id.indexOf('list') + 4, elemento.id.length);
+
+        $.ajax({
+            url: '/parametrizacion/pregunta/consultar/campos',
+            method: 'POST',
+            data: {
+                'array': JSON.stringify(elemento.value)
+            },
+            success: function (consulta_campo) {
+                let grupo = elemento.name.substr(7, 1);
+                console.log(grupo);
+                try {
+                    // con esta linea manejo el error, en el momento en que cambio el nombre formato por otro
+                    // sino lo usuara al momento de cambiarlo genera error porque inicialmente el repeditor les pone a todos el mismo
+                    // id que se llama 'campo', esto debemos cambiarlo para que nos funcione bien todo
+                    document.getElementById('campo_cruce_valor_list').id = "campo_cruce_valor_list" + grupo;
+                    document.getElementById('campo_cruce_concepto_list').id = "campo_cruce_concepto_list" + grupo;
+                } catch (err) {
+                }
+
+                $("#campo_cruce_valor_list" + grupo).find('option').remove();
+                $("#campo_cruce_valor_list" + grupo).append(`<option value="">Seleccione...</option>`)
+                consulta_campo.consulta_campo.forEach(consulta_campo => {
+                    $("#campo_cruce_valor_list" + grupo).append(`<option value="${consulta_campo.id_campo}">${consulta_campo.nombre}</option>`)
+                })
+
+                $("#campo_cruce_concepto_list" + grupo).find('option').remove();
+                $("#campo_cruce_concepto_list" + grupo).append(`<option value="">Seleccione...</option>`)
+                consulta_campo.consulta_campo.forEach(consulta_campo => {
+                    $("#campo_cruce_concepto_list" + grupo).append(`<option value="${consulta_campo.id_campo}">${consulta_campo.nombre}</option>`)
+                })
+            }
+        })
+    }
+</script>
+
+<script>
+    function submitForms(info_campo) {
+        let numero = "";
+
+        try {
+            var input = document.getElementById('longitud');
+            numero = parseInt(input.value, 10);
+        } catch (err) {
+            numero = 100;
+        }
+
+        //Validamos que se cumpla el rango
+        if (numero < 50 || numero > 500) {
+            alert('El campo longitud solo permite números entre 50 y 5000.');
+            input.focus();
+            return true;
+        } else {
+            $.ajax({
+                url: '/parametrizacion/validaciones/' + info_campo,
+                method: 'POST',
+                data: {
+                    'general': JSON.stringify($("#Form1").serializeArray()),
+                    'cruce': JSON.stringify($("#form_val_cruce").serializeArray()),
+                    'cruce_edit': JSON.stringify($("#form_edit_cruce").serializeArray()),
+                    'formatos': JSON.stringify($("#form_val_formatos").serializeArray()),
+                    'formatos_edit': JSON.stringify($("#form_edit_formatos").serializeArray()),
+                },
+                success: function () {
+                    console.log("hecho")
+                }
+            })
+        }
+        window.location = "/parametrizacion/list";
+
+    }
+</script>
+
+<script>
+    function carg(elemento) {
+        var grupo = elemento.name.substr(7, 1);
+        try {
+            // con esta linea manejo el error, en el momento en que cambio el nombre formato por otro
+            // sino lo usuara al momento de cambiarlo genera error porque inicialmente el repeditor les pone a todos el mismo
+            // id que se llama 'campo', esto debemos cambiarlo para que nos funcione bien todo
+            document.getElementById('nodo').id = "nodo" + grupo;
+        } catch (err) {
+        }
+        try {
+            // con esta linea manejo el error, en el momento en que cambio el nombre formato por otro
+            // sino lo usuara al momento de cambiarlo genera error porque inicialmente el repeditor les pone a todos el mismo
+            // id que se llama 'campo', esto debemos cambiarlo para que nos funcione bien todo
+            document.getElementById('nro_cuenta').id = "nro_cuenta" + grupo;
+        } catch (err) {
+        }
+        var nodo = document.getElementById('nodo' + grupo);
+        var cuenta = document.getElementById('nro_cuenta' + grupo);
+
+        var selected = elemento.options[elemento.selectedIndex].text
+        console.log(selected);
+        if (selected != "Nodo") {
+            nodo.disabled = true;
+            cuenta.disabled = false;
+        } else {
+            nodo.disabled = false;
+            cuenta.disabled = true;
+        }
+    }
+
+    function carg_list(elemento) {
+        var id = elemento.id;
+        console.log('list', elemento.id.indexOf('list'));
+        var grupo = elemento.id.substr(elemento.id.indexOf('list') + 4, elemento.id.length);
+        console.log('grupo', grupo);
+        try {
+            // con esta linea manejo el error, en el momento en que cambio el nombre formato por otro
+            // sino lo usuara al momento de cambiarlo genera error porque inicialmente el repeditor les pone a todos el mismo
+            // id que se llama 'campo', esto debemos cambiarlo para que nos funcione bien todo
+            document.getElementById('nodo_list').id = "nodo_list" + grupo;
+        } catch (err) {
+        }
+        try {
+            // con esta linea manejo el error, en el momento en que cambio el nombre formato por otro
+            // sino lo usuara al momento de cambiarlo genera error porque inicialmente el repeditor les pone a todos el mismo
+            // id que se llama 'campo', esto debemos cambiarlo para que nos funcione bien todo
+            document.getElementById('nro_cuenta_list').id = "nro_cuenta_list" + grupo;
+        } catch (err) {
+        }
+        var nodo = document.getElementById('nodo_list' + grupo);
+        var cuenta = document.getElementById('nro_cuenta_list' + grupo);
+
+        var selected = elemento.options[elemento.selectedIndex].text
+        console.log(selected);
+        if (selected != "Nodo") {
+            nodo.disabled = true;
+            cuenta.disabled = false;
+        } else {
+            nodo.disabled = false;
+            cuenta.disabled = true;
+        }
+    }
+</script>
+
+<script type="text/javascript">
+    function preguntarEliminar() {
+        var respuesta = confirm('¿Está seguro que desea eliminar esta validación?.');
+        if (respuesta == true) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    };
+</script>
